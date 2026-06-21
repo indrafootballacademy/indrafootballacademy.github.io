@@ -289,6 +289,9 @@
             <a class="nav-link" href="#" data-section="settings">
                 <i class="bi bi-people"></i>User Management
             </a>
+            <a class="nav-link" href="#" data-section="team">
+                <i class="bi bi-person-video3"></i>Team & About
+            </a>
         </nav>
         
         <div class="mt-auto pt-4">
@@ -731,6 +734,102 @@
             </div>
         </div>
 
+        <!-- ============ TEAM & ABOUT SECTION ============ -->
+        <div class="section-content d-none" id="section-team">
+            <div class="admin-panel">
+                <h5 class="mb-4"><i class="bi bi-person-video3 me-2"></i>Manage Team & About Page</h5>
+                <p class="text-muted small">Update coach photos, names, and details. Changes reflect on the About page.</p>
+                
+                <!-- Head Coach -->
+                <div class="border rounded-3 p-4 mb-4">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-star-fill text-warning me-2"></i>Head Coach</h6>
+                    <div class="row g-3">
+                        <div class="col-md-4 text-center">
+                            <div class="border rounded-3 p-3 bg-light">
+                                <img id="headCoachPreview" src="" alt="Head Coach" class="rounded-circle mb-2 d-none" style="width:120px; height:120px; object-fit:cover;">
+                                <div id="headCoachPlaceholder" class="mb-2">
+                                    <i class="bi bi-person-bounding-box text-primary" style="font-size: 4rem;"></i>
+                                </div>
+                                <input type="file" class="form-control form-control-sm" id="headCoachPhoto" accept="image/*" onchange="previewPhoto('headCoach')">
+                                <small class="text-muted d-block mt-1">Max 5MB • JPG/PNG</small>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold small">Name</label>
+                                <input type="text" class="form-control" id="headCoachName" placeholder="e.g. Coach Indra Singh" value="">
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold small">Title/Role</label>
+                                <input type="text" class="form-control" id="headCoachTitle" placeholder="e.g. Head Coach — Elite Development" value="">
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold small">Bio</label>
+                                <textarea class="form-control" rows="3" id="headCoachBio" placeholder="Short bio about coaching experience..."></textarea>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label fw-semibold small">Certification</label>
+                                <input type="text" class="form-control" id="headCoachCert" placeholder="e.g. UEFA A License" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Coaching Team (4 slots) -->
+                <h6 class="fw-bold mb-3"><i class="bi bi-people-fill text-primary me-2"></i>Coaching Team (4 coaches)</h6>
+                <div class="row g-3">
+                    <div class="col-md-6 col-lg-3" id="coach1Card">
+                        <div class="border rounded-3 p-3 text-center">
+                            <img id="coach1Preview" src="" alt="" class="rounded-circle mb-2 d-none" style="width:80px; height:80px; object-fit:cover;">
+                            <i id="coach1Placeholder" class="bi bi-person-circle d-block mb-2" style="font-size:3rem; color:#ccc;"></i>
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach1Name" placeholder="Coach Name">
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach1Role" placeholder="Role (e.g. Youth Coach)">
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach1Cert" placeholder="Certification">
+                            <input type="file" class="form-control form-control-sm" accept="image/*" onchange="previewPhoto('coach1')">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" id="coach2Card">
+                        <div class="border rounded-3 p-3 text-center">
+                            <img id="coach2Preview" src="" alt="" class="rounded-circle mb-2 d-none" style="width:80px; height:80px; object-fit:cover;">
+                            <i id="coach2Placeholder" class="bi bi-person-circle d-block mb-2" style="font-size:3rem; color:#ccc;"></i>
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach2Name" placeholder="Coach Name">
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach2Role" placeholder="Role">
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach2Cert" placeholder="Certification">
+                            <input type="file" class="form-control form-control-sm" accept="image/*" onchange="previewPhoto('coach2')">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" id="coach3Card">
+                        <div class="border rounded-3 p-3 text-center">
+                            <img id="coach3Preview" src="" alt="" class="rounded-circle mb-2 d-none" style="width:80px; height:80px; object-fit:cover;">
+                            <i id="coach3Placeholder" class="bi bi-person-circle d-block mb-2" style="font-size:3rem; color:#ccc;"></i>
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach3Name" placeholder="Coach Name">
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach3Role" placeholder="Role">
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach3Cert" placeholder="Certification">
+                            <input type="file" class="form-control form-control-sm" accept="image/*" onchange="previewPhoto('coach3')">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3" id="coach4Card">
+                        <div class="border rounded-3 p-3 text-center">
+                            <img id="coach4Preview" src="" alt="" class="rounded-circle mb-2 d-none" style="width:80px; height:80px; object-fit:cover;">
+                            <i id="coach4Placeholder" class="bi bi-person-circle d-block mb-2" style="font-size:3rem; color:#ccc;"></i>
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach4Name" placeholder="Coach Name">
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach4Role" placeholder="Role">
+                            <input type="text" class="form-control form-control-sm mb-1" id="coach4Cert" placeholder="Certification">
+                            <input type="file" class="form-control form-control-sm" accept="image/*" onchange="previewPhoto('coach4')">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <button class="btn btn-primary" onclick="saveTeamData()">
+                        <i class="bi bi-save me-2"></i>Save Team Details
+                    </button>
+                    <small class="text-muted ms-3">Photos will be uploaded to Firebase Storage.</small>
+                </div>
+                <div id="teamMsg" class="alert d-none mt-3 small"></div>
+            </div>
+        </div>
+        
         <!-- ============ SETTINGS SECTION ============ -->
         <div class="section-content d-none" id="section-settings">
             <div class="admin-panel">
@@ -881,7 +980,8 @@
             registrations: 'Registrations',
             schedule: 'Schedule',
             messages: 'Messages',
-            settings: 'User Management'
+            settings: 'User Management',
+            team: 'Team & About Page'
         };
         document.getElementById('sectionTitle').textContent = titles[sectionName] || 'Dashboard';
     }
@@ -1060,6 +1160,64 @@
         console.log('Filtering gallery:', category);
     }
 
+    // ============ TEAM PHOTO MANAGEMENT ============
+    function previewPhoto(prefix) {
+        var input = document.getElementById(prefix + 'Photo') || document.querySelector('#' + prefix + 'Card input[type="file"]') || event.target;
+        var preview = document.getElementById(prefix + 'Preview');
+        var placeholder = document.getElementById(prefix + 'Placeholder');
+        
+        if (input.files && input.files[0]) {
+            var file = input.files[0];
+            if (file.size > 5 * 1024 * 1024) {
+                alert('File too large. Max 5MB.');
+                return;
+            }
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                if (preview) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('d-none');
+                }
+                if (placeholder) {
+                    placeholder.classList.add('d-none');
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+    
+    function saveTeamData() {
+        var teamData = {
+            headCoach: {
+                name: document.getElementById('headCoachName').value,
+                title: document.getElementById('headCoachTitle').value,
+                bio: document.getElementById('headCoachBio').value,
+                cert: document.getElementById('headCoachCert').value
+            },
+            coaches: []
+        };
+        for (var i = 1; i <= 4; i++) {
+            teamData.coaches.push({
+                name: document.getElementById('coach' + i + 'Name').value,
+                role: document.getElementById('coach' + i + 'Role').value,
+                cert: document.getElementById('coach' + i + 'Cert').value
+            });
+        }
+        // Save to Firestore
+        db.collection('settings').doc('team').set(teamData).then(function() {
+            var msg = document.getElementById('teamMsg');
+            msg.className = 'alert alert-success mt-3 small';
+            msg.innerHTML = '<i class="bi bi-check-circle me-1"></i>Team details saved! Photo uploads will need Firebase Storage configured.';
+            msg.classList.remove('d-none');
+            setTimeout(function() { msg.classList.add('d-none'); }, 4000);
+        }).catch(function(err) {
+            var msg = document.getElementById('teamMsg');
+            msg.className = 'alert alert-danger mt-3 small';
+            msg.innerHTML = '<i class="bi bi-exclamation-circle me-1"></i>Error saving: ' + err.message;
+            msg.classList.remove('d-none');
+        });
+    }
+    
     // ============ SUB-ADMIN MANAGEMENT ============
     // Load sub-admins from Firestore on page load
     function loadSubAdmins() {
