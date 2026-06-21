@@ -206,11 +206,21 @@
                                 </div>
                             </div>
                             
-                            <!-- Reset Password (only for email/password users) -->
-                            <div id="resetPasswordSection" class="mb-3 d-none">
-                                <button class="btn btn-outline-warning action-btn w-100" onclick="resetPassword()">
-                                    <i class="bi bi-key me-2"></i>Reset Password (Send Email)
+                            <!-- Security Section -->
+                            <div id="resetPasswordSection" class="mb-3">
+                                <!-- For Email/Password users -->
+                                <button id="resetEmailBtn" class="btn btn-outline-warning action-btn w-100 d-none" onclick="resetPassword()">
+                                    <i class="bi bi-envelope me-2"></i>Send Password Reset Email
                                 </button>
+                                <!-- For Google users -->
+                                <a id="resetGoogleBtn" href="https://myaccount.google.com/security" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info action-btn w-100 d-none">
+                                    <i class="bi bi-google me-2"></i>Manage Password via Google
+                                </a>
+                                <small id="resetHint" class="text-muted d-block mt-1 d-none"></small>
+                                <!-- Back to Home button -->
+                                <a href="../index.html" class="btn btn-outline-secondary action-btn w-100 mt-2">
+                                    <i class="bi bi-house me-2"></i>Back to Homepage
+                                </a>
                             </div>
                             
                             <!-- Status messages -->
@@ -305,9 +315,15 @@
                 document.getElementById('verifiedBadge').className = 'badge bg-warning-subtle text-warning';
             }
             
-            // Show reset password only for email/password users
+            // Show appropriate password option based on provider
             if (provider === 'password') {
-                document.getElementById('resetPasswordSection').classList.remove('d-none');
+                document.getElementById('resetEmailBtn').classList.remove('d-none');
+                document.getElementById('resetHint').classList.remove('d-none');
+                document.getElementById('resetHint').textContent = 'A password reset link will be sent to your email address.';
+            } else if (provider === 'google.com') {
+                document.getElementById('resetGoogleBtn').classList.remove('d-none');
+                document.getElementById('resetHint').classList.remove('d-none');
+                document.getElementById('resetHint').textContent = 'You signed in with Google. Manage your password in Google Account settings.';
             }
 
             // Update navbar

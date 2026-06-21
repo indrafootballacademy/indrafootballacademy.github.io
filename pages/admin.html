@@ -825,6 +825,7 @@
     <!-- Firebase COMPAT SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
     <script>
         firebase.initializeApp({
             apiKey: "AIzaSyDMhwa7bxclPaeW44agM8s-FRVQxkbTAuU",
@@ -840,17 +841,20 @@
     // ============ ADMIN CONFIGURATION ============
     // Super Admin (full access - cannot be removed)
     const SUPER_ADMIN = 'some13feb@gmail.com';
-    
-    // Sub-Admins (can be added/removed by Super Admin)
-    const SUB_ADMINS = [
-        // Add sub-admin emails here, e.g.:
-        // 'coach1@gmail.com',
-        // 'assistant@gmail.com',
-    ];
-    
-    // Combined list (for access check)
-    const ADMIN_EMAILS = [SUPER_ADMIN, ...SUB_ADMINS];
-    
+
+    // Firestore reference
+    const db = firebase.firestore();
+
+    // Sub-Admins (loaded from Firestore)
+    let SUB_ADMINS = [];
+
+    // Combined list (for access check) — updated after loading from Firestore
+    let ADMIN_EMAILS = [SUPER_ADMIN];
+
+    function refreshAdminEmails() {
+        ADMIN_EMAILS = [SUPER_ADMIN, ...SUB_ADMINS];
+    }
+
     // Current user role
     let currentUserRole = null;
     
@@ -1057,6 +1061,28 @@
     }
 
     // ============ SUB-ADMIN MANAGEMENT ============
+    // Load sub-admins from Firestore on page load
+    function loadSubAdmins() {
+        db.collection('settings').doc('sub_admins').get().then(function(doc) {
+            if (doc.exists && doc.data().emails) {
+                SUB_ADMINS = doc.data().emails;
+                refreshAdminEmails();
+            }
+            renderSubAdminList();
+        }).catch(function(err) {
+            console.error('Error loading sub-admins:', err);
+            renderSubAdminList();
+        });
+    }
+
+    // Save sub-admins to Firestore
+    function saveSubAdminsToFirestore() {
+        return db.collection('settings').doc('sub_admins').set({
+            emails: SUB_ADMINS,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    }
+
     function addSubAdmin() {
         var email = document.getElementById('newSubAdminEmail').value.trim().toLowerCase();
         if (!email || !email.includes('@')) {
@@ -1073,12 +1099,16 @@
         }
         
         SUB_ADMINS.push(email);
-        ADMIN_EMAILS.push(email);
+        refreshAdminEmails();
         document.getElementById('newSubAdminEmail').value = '';
         renderSubAdminList();
-        alert('✅ ' + email + ' added as sub-admin. They can now sign in to the admin panel.');
+        saveSubAdminsToFirestore().then(function() {
+            alert('✅ ' + email + ' added as sub-admin. They can now sign in to the admin panel.');
+        }).catch(function(err) {
+            alert('Error saving: ' + err.message);
+        });
     }
-    
+
     function removeSubAdmin(email) {
         if (email === SUPER_ADMIN) {
             alert('Cannot remove Super Admin.');
@@ -1087,12 +1117,12 @@
         if (confirm('Remove "' + email + '" from sub-admin access?')) {
             var idx = SUB_ADMINS.indexOf(email);
             if (idx > -1) SUB_ADMINS.splice(idx, 1);
-            var idx2 = ADMIN_EMAILS.indexOf(email);
-            if (idx2 > -1) ADMIN_EMAILS.splice(idx2, 1);
+            refreshAdminEmails();
             renderSubAdminList();
+            saveSubAdminsToFirestore();
         }
     }
-    
+
     function renderSubAdminList() {
         var container = document.getElementById('subAdminList');
         if (SUB_ADMINS.length === 0) {
@@ -1108,9 +1138,9 @@
         });
         container.innerHTML = html;
     }
-    
-    // Render on page load
-    renderSubAdminList();
+
+    // Load sub-admins from Firestore on page load
+    loadSubAdmins();
     </script>
     
     <!-- Firebase (uncomment when configured) -->
