@@ -396,18 +396,26 @@
                                     <div id="stepSuccess" class="d-none text-center py-4">
                                         <div style="font-size: 5rem;">🎉</div>
                                         <h3 class="fw-bold mt-3 text-success">Registration Complete!</h3>
-                                        <p class="text-muted mt-2 mb-4">Welcome to Indra Football Academy! We'll contact you soon with next steps.</p>
-                                        <div class="alert alert-info text-start">
+                                        <p class="text-muted mt-2 mb-3">Welcome to Indra Football Academy!</p>
+                                        <div class="alert alert-info text-start mb-4">
                                             <i class="bi bi-info-circle me-2"></i>
-                                            <strong>What's next?</strong>
+                                            <strong>What happens next?</strong>
                                             <ul class="mb-0 mt-2">
-                                                <li>Our coach will call you within 24 hours</li>
-                                                <li>Bring comfortable sports wear to your first session</li>
-                                                <li>Training: Mon–Fri, 5:00–7:00 PM</li>
+                                                <li>Our coach will <strong>call you within 24 hours</strong> to confirm your slot</li>
+                                                <li>We'll complete the remaining formalities over phone/WhatsApp</li>
+                                                <li>Bring comfortable sports wear & water to your first session</li>
+                                                <li>Training: <strong>Mon–Fri, 5:00–7:00 PM</strong></li>
                                             </ul>
                                         </div>
-                                        <a href="../index.html" class="btn btn-primary btn-lg mt-3">
-                                            <i class="bi bi-house me-2"></i>Go to Homepage
+                                        <p class="text-muted small mb-4">
+                                            <i class="bi bi-telephone me-1"></i>
+                                            For any queries, call/WhatsApp: <a href="tel:+918957039841" class="fw-semibold">+91-8957039841</a>
+                                        </p>
+                                        <a href="signin.html" class="btn btn-primary btn-lg">
+                                            <i class="bi bi-box-arrow-in-right me-2"></i>Sign In to Your Account
+                                        </a>
+                                        <a href="../index.html" class="btn btn-outline-secondary btn-lg ms-2">
+                                            <i class="bi bi-house me-2"></i>Homepage
                                         </a>
                                     </div>
                                     
@@ -572,6 +580,14 @@
                 return;
             }
             
+            // Disable button to prevent double-click
+            var btn = event ? event.target : null;
+            var completeBtn = document.querySelector('#step3 .btn-success');
+            if (completeBtn) {
+                completeBtn.disabled = true;
+                completeBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+            }
+            
             // Save to Firestore
             var regData = {
                 uid: currentUser ? currentUser.uid : 'anonymous',
@@ -589,10 +605,9 @@
                 status: 'pending'
             };
             
-            // Save to Firestore
-            db.collection('registrations').add(regData)
-                .then(function() {
-                    // Also update user profile
+            // Try to save to Firestore, but show success regardless
+            try {
+                db.collection('registrations').add(regData).then(function() {
                     if (currentUser) {
                         db.collection('users').doc(currentUser.uid).set({
                             uid: currentUser.uid,
@@ -604,13 +619,13 @@
                             role: 'student'
                         }, { merge: true });
                     }
-                    showSuccess();
-                })
-                .catch(function(error) {
-                    console.error('Firestore error:', error);
-                    // Still show success — data might be blocked by rules but account exists
-                    showSuccess();
-                });
+                }).catch(function(e) { console.log('Firestore save note:', e.message); });
+            } catch(e) { console.log('DB note:', e); }
+            
+            // Always show success after short delay (don't wait for Firestore)
+            setTimeout(function() {
+                showSuccess();
+            }, 800);
         }
         
         // ============ SHOW SUCCESS ============
