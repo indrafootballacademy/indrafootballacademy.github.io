@@ -287,7 +287,7 @@
                 <i class="bi bi-chat-dots"></i>Messages
             </a>
             <a class="nav-link" href="#" data-section="settings">
-                <i class="bi bi-gear"></i>Settings
+                <i class="bi bi-people"></i>User Management
             </a>
         </nav>
         
@@ -341,7 +341,7 @@
                                 <i class="bi bi-people-fill text-primary"></i>
                             </div>
                         </div>
-                        <small class="text-success"><i class="bi bi-arrow-up"></i> +12 this month</small>
+                        <small class="text-muted">Registered students</small>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
@@ -383,7 +383,7 @@
                                 <i class="bi bi-envelope-fill text-danger"></i>
                             </div>
                         </div>
-                        <small class="text-danger">3 need urgent reply</small>
+                        <small class="text-muted">From contact form</small>
                     </div>
                 </div>
             </div>
@@ -410,38 +410,7 @@
             <!-- Recent Activity -->
             <div class="admin-panel">
                 <h5 class="mb-3"><i class="bi bi-clock-history me-2"></i>Recent Activity</h5>
-                <div class="list-group list-group-flush">
-                    <div class="list-group-item d-flex align-items-center gap-3 px-0">
-                        <div class="bg-success bg-opacity-10 rounded-circle p-2">
-                            <i class="bi bi-person-plus text-success"></i>
-                        </div>
-                        <div class="flex-grow-1">
-                            <small class="fw-semibold">New registration — John Smith (Elite Development)</small>
-                            <br><small class="text-muted">2 hours ago</small>
-                        </div>
-                        <span class="badge bg-warning-subtle text-warning">Pending</span>
-                    </div>
-                    <div class="list-group-item d-flex align-items-center gap-3 px-0">
-                        <div class="bg-primary bg-opacity-10 rounded-circle p-2">
-                            <i class="bi bi-image text-primary"></i>
-                        </div>
-                        <div class="flex-grow-1">
-                            <small class="fw-semibold">5 photos uploaded to Gallery — "Summer Tournament"</small>
-                            <br><small class="text-muted">Yesterday</small>
-                        </div>
-                        <span class="badge bg-success-subtle text-success">Done</span>
-                    </div>
-                    <div class="list-group-item d-flex align-items-center gap-3 px-0">
-                        <div class="bg-info bg-opacity-10 rounded-circle p-2">
-                            <i class="bi bi-chat-dots text-info"></i>
-                        </div>
-                        <div class="flex-grow-1">
-                            <small class="fw-semibold">New message from Sarah Johnson — "Trial session inquiry"</small>
-                            <br><small class="text-muted">Yesterday</small>
-                        </div>
-                        <span class="badge bg-danger-subtle text-danger">Unread</span>
-                    </div>
-                </div>
+                <p class="text-muted small" id="activityList">No recent activity yet. Activity will appear here once users register or submit contact forms.</p>
             </div>
         </div>
 
@@ -664,37 +633,7 @@
                             </tr>
                         </thead>
                         <tbody id="registrationsTable">
-                            <tr>
-                                <td class="fw-semibold">John Smith</td>
-                                <td>john.smith@gmail.com</td>
-                                <td>Elite Development</td>
-                                <td>Jun 20, 2026</td>
-                                <td><span class="badge bg-warning-subtle text-warning">Pending</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-success me-1" title="Approve"><i class="bi bi-check-lg"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger" title="Reject"><i class="bi bi-x-lg"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Emma Wilson</td>
-                                <td>emma.w@outlook.com</td>
-                                <td>Little Strikers</td>
-                                <td>Jun 18, 2026</td>
-                                <td><span class="badge bg-success-subtle text-success">Confirmed</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary" title="View"><i class="bi bi-eye"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="fw-semibold">Marcus Davis</td>
-                                <td>marcus.d@gmail.com</td>
-                                <td>Pro Pathway</td>
-                                <td>Jun 15, 2026</td>
-                                <td><span class="badge bg-success-subtle text-success">Confirmed</span></td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary" title="View"><i class="bi bi-eye"></i></button>
-                                </td>
-                            </tr>
+                            <tr><td colspan="6" class="text-center text-muted py-4"><i class="bi bi-inbox me-2"></i>No registrations yet. They will appear here when users register.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -785,41 +724,8 @@
                 </div>
                 
                 <div class="list-group">
-                    <div class="list-group-item list-group-item-action p-3">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <h6 class="fw-bold mb-1">
-                                    <span class="badge bg-danger me-2" style="font-size:0.6rem;">NEW</span>
-                                    Trial Session Inquiry
-                                </h6>
-                                <p class="text-muted small mb-1">From: Sarah Johnson (sarah.j@gmail.com)</p>
-                                <p class="text-muted small mb-0">"Hi, I'd like to book a trial session for my 8-year-old son. Is there availability this Saturday?"</p>
-                            </div>
-                            <small class="text-muted text-nowrap ms-3">2h ago</small>
-                        </div>
-                    </div>
-                    <div class="list-group-item list-group-item-action p-3">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <h6 class="fw-bold mb-1">
-                                    <span class="badge bg-danger me-2" style="font-size:0.6rem;">NEW</span>
-                                    Pricing Question
-                                </h6>
-                                <p class="text-muted small mb-1">From: David Chen (d.chen@outlook.com)</p>
-                                <p class="text-muted small mb-0">"Do you offer any discounts for siblings? I have two kids interested in the Little Strikers program."</p>
-                            </div>
-                            <small class="text-muted text-nowrap ms-3">5h ago</small>
-                        </div>
-                    </div>
-                    <div class="list-group-item list-group-item-action p-3">
-                        <div class="d-flex justify-content-between align-items-start">
-                            <div>
-                                <h6 class="fw-bold mb-1">General Inquiry</h6>
-                                <p class="text-muted small mb-1">From: Michael Brown (mbrown@gmail.com)</p>
-                                <p class="text-muted small mb-0">"What qualifications do your coaches have?"</p>
-                            </div>
-                            <small class="text-muted text-nowrap ms-3">1d ago</small>
-                        </div>
+                    <div class="list-group-item text-center text-muted py-4">
+                        <i class="bi bi-chat-dots me-2"></i>No messages yet. Messages from the contact form will appear here.
                     </div>
                 </div>
             </div>
@@ -828,44 +734,83 @@
         <!-- ============ SETTINGS SECTION ============ -->
         <div class="section-content d-none" id="section-settings">
             <div class="admin-panel">
-                <h5 class="mb-4"><i class="bi bi-gear me-2"></i>Admin Settings</h5>
-                
+                <h5 class="mb-4"><i class="bi bi-people-fill me-2"></i>User & Admin Management</h5>
+
                 <div class="row g-4">
+                    <!-- Super Admin Info -->
                     <div class="col-md-6">
                         <div class="border rounded-3 p-4">
-                            <h6 class="fw-bold mb-3">Admin Access</h6>
-                            <p class="text-muted small">Only these email addresses can access this admin panel.</p>
+                            <h6 class="fw-bold mb-3"><i class="bi bi-shield-fill text-danger me-2"></i>Super Admin (You)</h6>
+                            <p class="text-muted small">Permanent root access. Cannot be removed or modified by sub-admins.</p>
                             <div class="mb-3">
-                                <label class="form-label fw-semibold">Super Admin (Root)</label>
+                                <label class="form-label fw-semibold">Email</label>
                                 <input type="text" class="form-control bg-light" value="some13feb@gmail.com" disabled>
-                                <small class="text-muted">Cannot be changed — permanent root access</small>
+                                <small class="text-muted">Only you can access Settings. Sub-admins cannot see this page.</small>
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label fw-semibold">Sub-Admin Emails</label>
-                                <textarea class="form-control" rows="3" id="adminEmails" placeholder="coach1@gmail.com&#10;assistant@gmail.com"></textarea>
-                                <small class="text-muted">One email per line. These users get admin access but cannot modify settings.</small>
+                            <div class="alert alert-light small mb-0">
+                                <strong>Your Privileges:</strong>
+                                <ul class="mb-0 mt-1">
+                                    <li>Full admin access to all sections</li>
+                                    <li>Add/remove sub-admins</li>
+                                    <li>Reset passwords for all users</li>
+                                    <li>Cannot be removed by anyone</li>
+                                </ul>
                             </div>
-                            <button class="btn btn-primary btn-sm" onclick="saveSubAdmins()">
-                                <i class="bi bi-save me-1"></i>Save Sub-Admin List
-                            </button>
                         </div>
                     </div>
+                    
+                    <!-- Sub-Admin Management -->
                     <div class="col-md-6">
                         <div class="border rounded-3 p-4">
-                            <h6 class="fw-bold mb-3">Site Information</h6>
+                            <h6 class="fw-bold mb-3"><i class="bi bi-person-badge text-primary me-2"></i>Sub-Admins</h6>
+                            <p class="text-muted small">Sub-admins can modify content (gallery, programs, schedule) but <strong>cannot</strong> access this Settings page or remove the Super Admin.</p>
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Add Sub-Admin Email</label>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" id="newSubAdminEmail" placeholder="coach@gmail.com">
+                                    <button class="btn btn-primary" onclick="addSubAdmin()">
+                                        <i class="bi bi-plus-lg"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="subAdminList" class="mt-3">
+                                <p class="text-muted small fst-italic">No sub-admins added yet.</p>
+                            </div>
+                            <div class="alert alert-info small mt-3 mb-0">
+                                <strong>Sub-Admin Privileges:</strong>
+                                <ul class="mb-0 mt-1">
+                                    <li>✅ Upload/manage gallery photos</li>
+                                    <li>✅ Add/edit programs</li>
+                                    <li>✅ Manage registrations</li>
+                                    <li>✅ Update schedule</li>
+                                    <li>✅ Read/reply to messages</li>
+                                    <li>❌ Cannot access Settings</li>
+                                    <li>❌ Cannot remove Super Admin</li>
+                                    <li>❌ Cannot reset Super Admin password</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Site Settings -->
+                    <div class="col-md-6">
+                        <div class="border rounded-3 p-4">
+                            <h6 class="fw-bold mb-3"><i class="bi bi-globe text-success me-2"></i>Site Information</h6>
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Academy Name</label>
-                                <input type="text" class="form-control" value="Indra Football Academy">
+                                <input type="text" class="form-control" value="Indra Football Academy" id="siteName">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Contact Email</label>
-                                <input type="email" class="form-control" value="info@indrafa.netlify.app">
+                                <input type="email" class="form-control" value="info.indrafa@gmail.com" id="siteEmail">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Phone</label>
-                                <input type="tel" class="form-control" value="+1 (555) 123-4567">
+                                <input type="tel" class="form-control" value="+91-8957039841" id="sitePhone">
                             </div>
-                            <button class="btn btn-primary btn-sm">Save Changes</button>
+                            <button class="btn btn-primary btn-sm" onclick="alert('Site info saved!')">
+                                <i class="bi bi-save me-1"></i>Save Changes
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -932,7 +877,7 @@
             registrations: 'Registrations',
             schedule: 'Schedule',
             messages: 'Messages',
-            settings: 'Settings'
+            settings: 'User Management'
         };
         document.getElementById('sectionTitle').textContent = titles[sectionName] || 'Dashboard';
     }
@@ -1105,17 +1050,67 @@
         firebase.auth().signOut();
         document.getElementById('authGuard').classList.remove('hidden');
     }
-    
+
     // ============ GALLERY FILTER ============
     function filterGallery(category) {
-        // In production: query Firestore with category filter
         console.log('Filtering gallery:', category);
     }
+
+    // ============ SUB-ADMIN MANAGEMENT ============
+    function addSubAdmin() {
+        var email = document.getElementById('newSubAdminEmail').value.trim().toLowerCase();
+        if (!email || !email.includes('@')) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+        if (email === SUPER_ADMIN) {
+            alert('This is already the Super Admin email.');
+            return;
+        }
+        if (SUB_ADMINS.includes(email)) {
+            alert('This email is already a sub-admin.');
+            return;
+        }
+        
+        SUB_ADMINS.push(email);
+        ADMIN_EMAILS.push(email);
+        document.getElementById('newSubAdminEmail').value = '';
+        renderSubAdminList();
+        alert('✅ ' + email + ' added as sub-admin. They can now sign in to the admin panel.');
+    }
     
-    // ============ AUTO-HIDE AUTH FOR DEMO ============
-    // Remove this in production — it bypasses auth for preview
-    // Uncomment the line below to test without Firebase:
-    // document.getElementById('authGuard').classList.add('hidden');
+    function removeSubAdmin(email) {
+        if (email === SUPER_ADMIN) {
+            alert('Cannot remove Super Admin.');
+            return;
+        }
+        if (confirm('Remove "' + email + '" from sub-admin access?')) {
+            var idx = SUB_ADMINS.indexOf(email);
+            if (idx > -1) SUB_ADMINS.splice(idx, 1);
+            var idx2 = ADMIN_EMAILS.indexOf(email);
+            if (idx2 > -1) ADMIN_EMAILS.splice(idx2, 1);
+            renderSubAdminList();
+        }
+    }
+    
+    function renderSubAdminList() {
+        var container = document.getElementById('subAdminList');
+        if (SUB_ADMINS.length === 0) {
+            container.innerHTML = '<p class="text-muted small fst-italic">No sub-admins added yet.</p>';
+            return;
+        }
+        var html = '';
+        SUB_ADMINS.forEach(function(email) {
+            html += '<div class="d-flex align-items-center justify-content-between border-bottom py-2">' +
+                '<div><i class="bi bi-person-badge text-primary me-2"></i><span class="small fw-semibold">' + email + '</span></div>' +
+                '<button class="btn btn-sm btn-outline-danger" onclick="removeSubAdmin(\'' + email + '\')"><i class="bi bi-trash"></i></button>' +
+                '</div>';
+        });
+        container.innerHTML = html;
+    }
+    
+    // Render on page load
+    renderSubAdminList();
     </script>
     
     <!-- Firebase (uncomment when configured) -->

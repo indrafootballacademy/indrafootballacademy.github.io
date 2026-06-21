@@ -830,11 +830,11 @@
                 var ADMIN_EMAIL = 'some13feb@gmail.com';
                 var isAdmin = user.email && user.email.toLowerCase() === ADMIN_EMAIL;
                 var name = user.displayName ? user.displayName.split(' ')[0] : 'Account';
+                var btnLabel = isAdmin ? '<i class="bi bi-shield-fill me-1"></i>Super Admin' : '<i class="bi bi-person-circle me-1"></i>Profile';
                 authArea.innerHTML = 
                     '<div class="dropdown">' +
-                    '<button class="btn btn-outline-light btn-sm px-3 py-1 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
-                    '<i class="bi bi-person-circle me-1"></i>Profile' +
-                    '</button>' +
+                    '<button class="btn btn-outline-light btn-sm px-3 py-1 dropdown-toggle" type="button" data-bs-toggle="dropdown">' +
+                    btnLabel + '</button>' +
                     '<ul class="dropdown-menu dropdown-menu-end shadow-sm">' +
                     '<li><span class="dropdown-item-text small text-muted"><i class="bi bi-person-fill me-1"></i>' + name + '</span></li>' +
                     '<li><span class="dropdown-item-text small text-muted"><i class="bi bi-envelope me-1"></i>' + (user.email || '') + '</span></li>' +

@@ -309,11 +309,24 @@
             if (provider === 'password') {
                 document.getElementById('resetPasswordSection').classList.remove('d-none');
             }
-            
+
             // Update navbar
-            document.getElementById('navAuthArea').innerHTML = 
-                '<a href="profile.html" class="btn btn-outline-light btn-sm px-3 py-1">' +
-                '<i class="bi bi-person-check me-1"></i>' + name.split(' ')[0] + '</a>';
+            var isAdmin = email.toLowerCase() === ADMIN_EMAIL;
+            var btnLabel = isAdmin ? '<i class="bi bi-shield-fill me-1"></i>Super Admin' : '<i class="bi bi-person-circle me-1"></i>Profile';
+            document.getElementById('navAuthArea').innerHTML =
+                '<div class="dropdown">' +
+                '<button class="btn btn-outline-light btn-sm px-3 py-1 dropdown-toggle" type="button" data-bs-toggle="dropdown">' +
+                btnLabel + '</button>' +
+                '<ul class="dropdown-menu dropdown-menu-end shadow-sm">' +
+                '<li><span class="dropdown-item-text small text-muted"><i class="bi bi-person-fill me-1"></i>' + name + '</span></li>' +
+                '<li><span class="dropdown-item-text small text-muted"><i class="bi bi-envelope me-1"></i>' + email + '</span></li>' +
+                '<li><hr class="dropdown-divider"></li>' +
+                (isAdmin ? '<li><a class="dropdown-item" href="admin.html"><i class="bi bi-gear-fill me-2"></i>Modify Content</a></li>' : '') +
+                '<li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-badge me-2"></i>Your Profile</a></li>' +
+                '<li><a class="dropdown-item" href="../index.html"><i class="bi bi-house me-2"></i>Homepage</a></li>' +
+                '<li><hr class="dropdown-divider"></li>' +
+                '<li><a class="dropdown-item text-danger" href="#" onclick="doSignOut()"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>' +
+                '</ul></div>';
         }
         
         function updateDisplayName() {
