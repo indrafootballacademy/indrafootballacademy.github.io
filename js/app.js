@@ -220,16 +220,24 @@ function createToastContainer() {
 
 // ============ LOGIN HANDLER (Placeholder — connects to auth.js) ============
 function handleLogin() {
-    // Show login modal (Bootstrap 5)
-    const loginModal = document.getElementById('loginModal');
-    if (loginModal) {
-        const modal = new bootstrap.Modal(loginModal);
-        modal.show();
+    // If already signed in, don't show sign-in modal
+    if (typeof firebase !== 'undefined' && firebase.auth().currentUser) {
+        // Already signed in — just show quick account info or sign out
+        if (confirm('You are signed in as ' + firebase.auth().currentUser.email + '.\n\nSign out?')) {
+            firebase.auth().signOut().then(function() { location.reload(); });
+        }
     } else {
-        // On inner pages, redirect to sign-in page
-        window.location.href = window.location.pathname.includes('/pages/')
-            ? 'signin.html'
-            : 'pages/signin.html';
+        // Show login modal (Bootstrap 5)
+        const loginModal = document.getElementById('loginModal');
+        if (loginModal) {
+            const modal = new bootstrap.Modal(loginModal);
+            modal.show();
+        } else {
+            // On inner pages, redirect to sign-in page
+            window.location.href = window.location.pathname.includes('/pages/')
+                ? 'signin.html'
+                : 'pages/signin.html';
+        }
     }
 }
 

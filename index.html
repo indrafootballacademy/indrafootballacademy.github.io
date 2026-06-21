@@ -326,7 +326,7 @@
                     </div>
                     <!-- Right Content -->
                     <div class="col-lg-8">
-                        <div class="p-4 p-lg-5">
+                        <div class="p-4 p-lg-5" id="modalSigninContent">
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <div>
                                     <h4 class="fw-bold mb-1">Sign In</h4>
@@ -787,8 +787,56 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <!-- GLightbox -->
     <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js"></script>
-    <!-- Firebase SDK (modular) -->
-    <script type="module" src="js/firebase-config.js"></script>
+    <!-- Firebase COMPAT SDK (regular scripts — works everywhere) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script>
+        // Firebase Init
+        firebase.initializeApp({
+            apiKey: "AIzaSyDMhwa7bxclPaeW44agM8s-FRVQxkbTAuU",
+            authDomain: "indra-football-academy.firebaseapp.com",
+            projectId: "indra-football-academy",
+            storageBucket: "indra-football-academy.firebasestorage.app",
+            messagingSenderId: "794774125541",
+            appId: "1:794774125541:web:54bb5c00c61e10b3b38d0c"
+        });
+        var auth = firebase.auth();
+        var googleProvider = new firebase.auth.GoogleAuthProvider();
+        googleProvider.addScope('email');
+        googleProvider.addScope('profile');
+        
+        // Google Sign-In (redirect — reliable)
+        function signInWithGoogle() {
+            auth.signInWithRedirect(googleProvider);
+        }
+        
+        // Handle redirect result
+        auth.getRedirectResult().then(function(result) {
+            if (result.user) {
+                console.log('Signed in:', result.user.email);
+            }
+        }).catch(function(err) {
+            console.error('Auth error:', err.code);
+        });
+        
+        // Auth state listener — update navbar
+        auth.onAuthStateChanged(function(user) {
+            var loginBtn = document.getElementById('loginBtn');
+            if (user && loginBtn) {
+                var name = user.displayName ? user.displayName.split(' ')[0] : 'Account';
+                loginBtn.innerHTML = '<span class="badge bg-warning text-dark rounded-pill px-3 py-2">' +
+                    '<span class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center me-1" style="width:22px;height:22px;font-size:12px;">' + 
+                    name.charAt(0).toUpperCase() + '</span> ' + name + '</span>';
+                loginBtn.removeAttribute('onclick');
+                loginBtn.onclick = function() {
+                    if (confirm('Sign out?')) { auth.signOut(); location.reload(); }
+                };
+            } else if (loginBtn) {
+                loginBtn.innerHTML = '<i class="bi bi-person-circle me-1"></i>Sign In';
+                loginBtn.onclick = handleLogin;
+            }
+        });
+    </script>
     <!-- Hero Doodle Animation (subtle background) -->
     <script src="js/hero-doodle.js"></script>
     <!-- Custom JS -->
