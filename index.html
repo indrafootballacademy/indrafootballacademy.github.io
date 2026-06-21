@@ -805,19 +805,19 @@
         googleProvider.addScope('email');
         googleProvider.addScope('profile');
         
-        // Google Sign-In (redirect — reliable)
+        // Google Sign-In (popup — instant feedback)
         function signInWithGoogle() {
-            auth.signInWithRedirect(googleProvider);
+            auth.signInWithPopup(googleProvider).then(function(result) {
+                // Close modal if open
+                var modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+                if (modal) modal.hide();
+            }).catch(function(err) {
+                console.log('Google sign-in:', err.code);
+                if (err.code === 'auth/popup-closed-by-user') {
+                    alert('Sign-in cancelled. Please complete sign-in in the Google popup window.');
+                }
+            });
         }
-        
-        // Handle redirect result
-        auth.getRedirectResult().then(function(result) {
-            if (result.user) {
-                console.log('Signed in:', result.user.email);
-            }
-        }).catch(function(err) {
-            console.error('Auth error:', err.code);
-        });
         
         // Auth state listener — update navbar
         auth.onAuthStateChanged(function(user) {
