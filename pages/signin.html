@@ -212,31 +212,27 @@
             if (status) { status.classList.remove('d-none'); }
             
             if (typeof window.signInWithGoogle === 'function') {
-                // Real Firebase auth available
-                window.signInWithGoogle().then(function(user) {
-                    handleSignInSuccess(user);
-                }).catch(function(err) {
-                    if (status) { status.classList.add('d-none'); }
-                    document.getElementById('signinContent').insertAdjacentHTML('afterbegin', 
-                        '<div class="alert alert-danger mb-3">' +
-                        '<i class="bi bi-exclamation-triangle me-2"></i>' +
-                        '<strong>Sign-in failed:</strong> ' + err.message + 
-                        '<br><small class="mt-1 d-block">Make sure popups are allowed and try again.</small></div>'
-                    );
-                });
+                // Redirect to Google — page will reload after auth
+                window.signInWithGoogle();
             } else {
-                // Firebase not loaded yet — show message
-                document.getElementById('signinContent').innerHTML = `
-                    <div class="text-center py-4">
-                        <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
-                        <h4 class="fw-bold mt-3 text-success">Signed In!</h4>
-                        <p class="text-muted mt-2">Redirecting...</p>
-                        <a href="../index.html" class="btn btn-primary btn-lg mt-3">
-                            <i class="bi bi-house me-2"></i>Go to Homepage
-                        </a>
-                    </div>`;
+                // Firebase module still loading — wait and retry
+                if (status) { status.classList.add('d-none'); }
+                alert('Still loading. Please wait a moment and click again.');
             }
         }
+        
+        // Listen for redirect result (fires when page reloads after Google auth)
+        window.addEventListener('firebase-redirect-success', function(e) {
+            handleSignInSuccess(e.detail);
+        });
+        window.addEventListener('firebase-redirect-error', function(e) {
+            const err = e.detail;
+            document.getElementById('signinContent').insertAdjacentHTML('afterbegin', 
+                '<div class="alert alert-danger mb-3">' +
+                '<i class="bi bi-exclamation-triangle me-2"></i>' +
+                '<strong>Sign-in failed:</strong> ' + (err.message || 'Unknown error') + '</div>'
+            );
+        });
         
         function doEmailSignIn(event) {
             event.preventDefault();

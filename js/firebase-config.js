@@ -6,7 +6,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import {
     getAuth,
-    signInWithPopup,
     signInWithRedirect,
     getRedirectResult,
     createUserWithEmailAndPassword,
@@ -45,20 +44,10 @@ googleProvider.addScope('email');
 googleProvider.addScope('profile');
 
 // ============ GOOGLE SIGN-IN ============
-async function signInWithGoogle() {
-    try {
-        const result = await signInWithPopup(auth, googleProvider);
-        const user = result.user;
-        await saveUserProfile(user);
-        return user;
-    } catch (error) {
-        if (error.code === 'auth/popup-blocked' || error.code === 'auth/popup-closed-by-user') {
-            // Fallback to redirect
-            await signInWithRedirect(auth, googleProvider);
-            return null;
-        }
-        throw error;
-    }
+// Using REDIRECT method (not popup) — much more reliable on deployed sites
+function signInWithGoogle() {
+    // This navigates the user away to Google, then back to this page
+    return signInWithRedirect(auth, googleProvider);
 }
 
 // ============ EMAIL/PASSWORD SIGN-UP ============
@@ -130,14 +119,21 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // ============ REDIRECT RESULT HANDLER ============
-getRedirectResult(auth).then((result) => {
-    if (result && result.user) {
-        saveUserProfile(result.user);
-        updateUIForLoggedInUser(result.user);
-    }
-}).catch((error) => {
-    if (error.code) console.error('Redirect error:', error.code);
-});
+getRedirectResult(auth)
+    .then((result) => {
+        if (result && result.user) {
+            saveUserProfile(result.user);
+            updateUIForLoggedInUser(result.user);
+            // Dispatch custom event so signin page can react
+            window.dispatchEvent(new CustomEvent('firebase-redirect-success', { detail: result.user }));
+        }
+    })
+    .catch((error) => {
+        if (error.code) {
+            console.error('Redirect error:', error.code, error.message);
+            window.dispatchEvent(new CustomEvent('firebase-redirect-error', { detail: error }));
+        }
+    });
 
 // ============ UI HELPERS ============
 function updateUIForLoggedInUser(user) {
