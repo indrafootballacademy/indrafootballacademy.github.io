@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule | Indra Football Academy</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="[REDACTED_CONN_STRING]://400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animations.css" rel="stylesheet">
+    
+    <style>
+        .schedule-card {
+            border-left: 4px solid;
+            transition: all 0.3s;
+        }
+        .schedule-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .schedule-card.little-strikers { border-left-color: #28a745; }
+        .schedule-card.elite-dev { border-left-color: #1a73e8; }
+        .schedule-card.pro-pathway { border-left-color: #dc3545; }
+        .day-header {
+            background: #f8f9fa;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FULL NAVIGATION BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" id="mainNavbar" style="background: rgba(15, 15, 26, 0.95); backdrop-filter: blur(20px);">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="bi bi-trophy-fill text-warning me-2"></i>
+                <span style="color: #ffc107;">IFA</span> Indra Football Academy
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#pageNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pageNav">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="schedule.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <a href="register.html" class="btn btn-warning btn-sm fw-semibold px-3 py-1">Register</a>
+                    <a href="signin.html" class="btn btn-outline-light btn-sm px-3 py-1">
+                        <i class="bi bi-person-circle me-1"></i>Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="py-5 bg-dark text-white" style="padding-top: 140px !important;">
+        <div class="container text-center" data-aos="fade-up">
+            <span class="badge bg-info text-dark px-3 py-2 mb-3">📅 SCHEDULE</span>
+            <h1 class="display-4 fw-bold mb-3">Training Schedule</h1>
+            <p class="fs-5 text-white-50 mx-auto" style="max-width: 600px;">
+                Our weekly training timetable. All sessions held at the IFA Training Centre.
+            </p>
+        </div>
+    </section>
+
+    <!-- LEGEND -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center gap-4">
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle me-2" style="width:12px;height:12px;background:#28a745;"></div>
+                    <small class="fw-semibold">Little Strikers (6–10)</small>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle me-2" style="width:12px;height:12px;background:#1a73e8;"></div>
+                    <small class="fw-semibold">Elite Development (11–16)</small>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="rounded-circle me-2" style="width:12px;height:12px;background:#dc3545;"></div>
+                    <small class="fw-semibold">Pro Pathway (16+)</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="py-5">
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    
+                    <!-- Monday -->
+                    <div class="mb-4" data-aos="fade-up">
+                        <div class="day-header d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-calendar-day text-primary"></i>
+                            <span>Monday</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="card schedule-card little-strikers border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Little Strikers</h6>
+                                        <small class="text-muted">Group A — Main Pitch</small>
+                                    </div>
+                                    <span class="badge bg-success-subtle text-success px-3 py-2">4:00 – 5:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="card schedule-card elite-dev border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Elite Development</h6>
+                                        <small class="text-muted">Technical Focus — Training Ground 2</small>
+                                    </div>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">5:30 – 7:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="card schedule-card pro-pathway border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Pro Pathway</h6>
+                                        <small class="text-muted">Tactical Session — Main Pitch</small>
+                                    </div>
+                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">7:00 – 9:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tuesday -->
+                    <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="day-header d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-calendar-day text-primary"></i>
+                            <span>Tuesday</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="card schedule-card pro-pathway border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Pro Pathway</h6>
+                                        <small class="text-muted">Fitness & Conditioning — Gym</small>
+                                    </div>
+                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">6:00 – 8:00 AM</span>
+                                </div>
+                            </div>
+                            <div class="card schedule-card elite-dev border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Elite Development</h6>
+                                        <small class="text-muted">Match Simulation — Main Pitch</small>
+                                    </div>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">5:30 – 7:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Wednesday -->
+                    <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="day-header d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-calendar-day text-primary"></i>
+                            <span>Wednesday</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="card schedule-card little-strikers border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Little Strikers</h6>
+                                        <small class="text-muted">Group B — Training Ground 2</small>
+                                    </div>
+                                    <span class="badge bg-success-subtle text-success px-3 py-2">4:00 – 5:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="card schedule-card pro-pathway border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Pro Pathway</h6>
+                                        <small class="text-muted">Technical Excellence — Main Pitch</small>
+                                    </div>
+                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">7:00 – 9:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Thursday -->
+                    <div class="mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="day-header d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-calendar-day text-primary"></i>
+                            <span>Thursday</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="card schedule-card elite-dev border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Elite Development</h6>
+                                        <small class="text-muted">Set Pieces & Position Play</small>
+                                    </div>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">5:30 – 7:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="card schedule-card pro-pathway border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Pro Pathway</h6>
+                                        <small class="text-muted">Video Analysis + Match Prep</small>
+                                    </div>
+                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">7:00 – 9:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Friday -->
+                    <div class="mb-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="day-header d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-calendar-day text-primary"></i>
+                            <span>Friday</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="card schedule-card pro-pathway border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Pro Pathway</h6>
+                                        <small class="text-muted">Match Day (League/Friendly)</small>
+                                    </div>
+                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">5:00 – 7:00 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Saturday -->
+                    <div class="mb-4" data-aos="fade-up" data-aos-delay="500">
+                        <div class="day-header d-flex align-items-center gap-2 mb-3">
+                            <i class="bi bi-calendar-day text-warning"></i>
+                            <span>Saturday</span>
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="card schedule-card little-strikers border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Little Strikers — Fun Match Day!</h6>
+                                        <small class="text-muted">Mini tournament + parents welcome</small>
+                                    </div>
+                                    <span class="badge bg-success-subtle text-success px-3 py-2">9:00 – 11:00 AM</span>
+                                </div>
+                            </div>
+                            <div class="card schedule-card elite-dev border-0 shadow-sm p-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold">Elite Development — Match Day</h6>
+                                        <small class="text-muted">League fixtures</small>
+                                    </div>
+                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">11:30 AM – 1:30 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <!-- Note -->
+            <div class="text-center mt-4" data-aos="fade-up">
+                <div class="alert alert-info d-inline-block">
+                    <i class="bi bi-info-circle me-2"></i>
+                    Schedule may vary during school holidays. Check our social media for updates.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <small class="text-white-50">© 2026 Indra Football Academy. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
+</body>
+</html>

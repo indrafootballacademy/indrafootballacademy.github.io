@@ -1,0 +1,122 @@
+// ============================================================
+// Firestore Security Rules — ProStrike Football Academy
+// These rules control who can read/write data in your database
+// Deploy: firebase deploy --only firestore:rules
+// ============================================================
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ============ HELPER FUNCTIONS ============
+    
+    // Check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Check if user is the document owner
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Check if user is an admin
+    // (Set admin custom claim via Firebase Admin SDK)
+    function isAdmin() {
+      return isAuthenticated() && request.auth.token.admin == true;
+    }
+    
+    // Validate string field length
+    function isValidString(field, maxLength) {
+      return field is string && field.size() <= maxLength;
+    }
+    
+    // ============ USER PROFILES ============
+    match /users/{userId} {
+      // Users can read their own profile
+      allow read: if isOwner(userId);
+      
+      // Users can create their own profile (on first login)
+      allow create: if isOwner(userId) && 
+        request.resource.data.keys().hasAll(['uid', 'email', 'displayName']) &&
+        request.resource.data.uid == userId;
+      
+      // Users can update their own profile (limited fields)
+      allow update: if isOwner(userId) &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(['uid', 'role', 'createdAt']);
+      
+      // Only admins can delete user profiles
+      allow delete: if isAdmin();
+    }
+    
+    // ============ COACHING PROGRAMS ============
+    match /programs/{programId} {
+      // Anyone can read programs (public info)
+      allow read: if true;
+      
+      // Only admins can create/edit/delete programs
+      allow write: if isAdmin();
+    }
+    
+    // ============ GALLERY ============
+    match /gallery/{imageId} {
+      // Anyone can view gallery (public)
+      allow read: if true;
+      
+      // Only admins can upload/edit/delete images
+      allow write: if isAdmin();
+    }
+    
+    // ============ REGISTRATIONS ============
+    match /registrations/{registrationId} {
+      // Users can read their own registrations
+      allow read: if isAuthenticated() && 
+        resource.data.userId == request.auth.uid;
+      
+      // Admins can read all registrations
+      allow read: if isAdmin();
+      
+      // Authenticated users can create a registration
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid &&
+        request.resource.data.keys().hasAll(['userId', 'programId', 'status']);
+      
+      // Users cannot edit their registration (admins only)
+      allow update: if isAdmin();
+      
+      // Only admins can delete registrations
+      allow delete: if isAdmin();
+    }
+    
+    // ============ CONTACT MESSAGES ============
+    match /contacts/{messageId} {
+      // No one can read messages from the client (admin reads via Admin SDK)
+      allow read: if isAdmin();
+      
+      // Anyone can submit a contact message (rate limited by app logic)
+      allow create: if true &&
+        request.resource.data.keys().hasAll(['name', 'email', 'message']) &&
+        isValidString(request.resource.data.name, 100) &&
+        isValidString(request.resource.data.email, 200) &&
+        isValidString(request.resource.data.message, 2000);
+      
+      // No updates or deletes from client
+      allow update, delete: if isAdmin();
+    }
+    
+    // ============ SCHEDULE / EVENTS ============
+    match /schedule/{eventId} {
+      // Anyone can view the schedule
+      allow read: if true;
+      
+      // Only admins can modify the schedule
+      allow write: if isAdmin();
+    }
+    
+    // ============ DENY ALL OTHER PATHS ============
+    // This is critical — blocks access to any collection not explicitly defined
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

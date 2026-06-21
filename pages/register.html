@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Indra Football Academy</title>
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="[REDACTED_CONN_STRING]://400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animations.css" rel="stylesheet">
+    
+    <style>
+        .register-section {
+            min-height: 100vh;
+            padding-top: 100px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        .auth-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .auth-sidebar {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .social-btn {
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #e9ecef;
+        }
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .social-btn-google {
+            background: white;
+            color: #333;
+        }
+        .social-btn-google:hover {
+            border-color: #4285F4;
+            background: #f8f9ff;
+        }
+        .social-btn-microsoft {
+            background: white;
+            color: #333;
+        }
+        .social-btn-microsoft:hover {
+            border-color: #00a4ef;
+            background: #f0f9ff;
+        }
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2rem;
+        }
+        .step-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            background: #e9ecef;
+            color: #6c757d;
+            transition: all 0.3s;
+        }
+        .step-dot.active {
+            background: var(--primary);
+            color: white;
+        }
+        .step-dot.completed {
+            background: #28a745;
+            color: white;
+        }
+        .step-line {
+            flex: 1;
+            height: 2px;
+            background: #e9ecef;
+        }
+        .step-line.active {
+            background: var(--primary);
+        }
+        .program-select-card {
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        .program-select-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        .program-select-card.selected {
+            border-color: var(--primary);
+            background: rgba(26, 115, 232, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FULL NAVIGATION BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" id="mainNavbar" style="background: rgba(15, 15, 26, 0.95); backdrop-filter: blur(20px);">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="bi bi-trophy-fill text-warning me-2"></i>
+                <span style="color: #ffc107;">IFA</span> Indra Football Academy
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#pageNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pageNav">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <a href="register.html" class="btn btn-warning btn-sm fw-semibold px-3 py-1">Register</a>
+                    <a href="signin.html" class="btn btn-outline-light btn-sm px-3 py-1">
+                        <i class="bi bi-person-circle me-1"></i>Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- REGISTRATION SECTION -->
+    <section class="register-section">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-9">
+                    <div class="card auth-card border-0" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- Left Sidebar -->
+                            <div class="col-lg-4 d-none d-lg-block">
+                                <div class="auth-sidebar h-100 text-white">
+                                    <div>
+                                        <h3 class="fw-bold mb-3">Join IFA</h3>
+                                        <p class="text-white-50 mb-4">
+                                            Start your football journey today. Registration is quick and secure.
+                                        </p>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-3 d-flex align-items-center">
+                                                <i class="bi bi-shield-check text-warning me-2 fs-5"></i>
+                                                <small>Secure sign-in with Google/Outlook</small>
+                                            </li>
+                                            <li class="mb-3 d-flex align-items-center">
+                                                <i class="bi bi-clock text-warning me-2 fs-5"></i>
+                                                <small>Takes less than 2 minutes</small>
+                                            </li>
+                                            <li class="mb-3 d-flex align-items-center">
+                                                <i class="bi bi-credit-card text-warning me-2 fs-5"></i>
+                                                <small>No payment required to sign up</small>
+                                            </li>
+                                            <li class="mb-3 d-flex align-items-center">
+                                                <i class="bi bi-people text-warning me-2 fs-5"></i>
+                                                <small>Join 500+ happy students</small>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="mt-auto pt-4">
+                                        <small class="text-white-50">
+                                            <i class="bi bi-lock-fill me-1"></i>
+                                            Your data is encrypted and never shared
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Right Content -->
+                            <div class="col-lg-8">
+                                <div class="card-body p-4 p-lg-5">
+                                    <!-- Step Indicator -->
+                                    <div class="step-indicator">
+                                        <div class="step-dot active" id="step1dot">1</div>
+                                        <div class="step-line" id="line1"></div>
+                                        <div class="step-dot" id="step2dot">2</div>
+                                        <div class="step-line" id="line2"></div>
+                                        <div class="step-dot" id="step3dot">3</div>
+                                    </div>
+                                    
+                                    <!-- Step 1: Authentication -->
+                                    <div id="step1" class="step-content">
+                                        <h4 class="fw-bold mb-1">Create Your Account</h4>
+                                        <p class="text-muted mb-4">Sign in securely — no password needed!</p>
+                                        
+                                        <!-- Social Login Buttons -->
+                                        <button type="button" class="social-btn social-btn-google w-100 d-flex align-items-center justify-content-center gap-2 mb-3" onclick="signInWithGoogle()">
+                                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                            </svg>
+                                            Continue with Google
+                                        </button>
+                                        
+                                        <button type="button" class="social-btn social-btn-microsoft w-100 d-flex align-items-center justify-content-center gap-2 mb-4" onclick="signInWithMicrosoft()">
+                                            <svg width="20" height="20" viewBox="0 0 24 24">
+                                                <rect fill="#F25022" x="1" y="1" width="10" height="10"/>
+                                                <rect fill="#7FBA00" x="13" y="1" width="10" height="10"/>
+                                                <rect fill="#00A4EF" x="1" y="13" width="10" height="10"/>
+                                                <rect fill="#FFB900" x="13" y="13" width="10" height="10"/>
+                                            </svg>
+                                            Continue with Microsoft / Outlook
+                                        </button>
+                                        
+                                        <div class="text-center">
+                                            <small class="text-muted">
+                                                <i class="bi bi-shield-fill-check text-success me-1"></i>
+                                                We never see or store your password. 
+                                                <a href="#" class="text-decoration-none">Learn more</a>
+                                            </small>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Step 2: Select Program -->
+                                    <div id="step2" class="step-content d-none">
+                                        <h4 class="fw-bold mb-1">Choose Your Program</h4>
+                                        <p class="text-muted mb-4">Select the coaching program that fits your level</p>
+                                        
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <div class="card program-select-card p-3" data-program="little-strikers" onclick="selectProgram(this)">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="bg-success bg-opacity-10 rounded-3 p-3 me-3">
+                                                            <i class="bi bi-people-fill text-success fs-4"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <h6 class="mb-0 fw-bold">Little Strikers</h6>
+                                                            <small class="text-muted">Ages 6–10 • 2x/week • $40/month</small>
+                                                        </div>
+                                                        <i class="bi bi-check-circle-fill text-primary fs-4 d-none check-icon"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="card program-select-card p-3" data-program="elite-development" onclick="selectProgram(this)">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="bg-primary bg-opacity-10 rounded-3 p-3 me-3">
+                                                            <i class="bi bi-lightning-fill text-primary fs-4"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <h6 class="mb-0 fw-bold">Elite Development <span class="badge bg-warning text-dark ms-1">Popular</span></h6>
+                                                            <small class="text-muted">Ages 11–16 • 3x/week • $65/month</small>
+                                                        </div>
+                                                        <i class="bi bi-check-circle-fill text-primary fs-4 d-none check-icon"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="card program-select-card p-3" data-program="pro-pathway" onclick="selectProgram(this)">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="bg-danger bg-opacity-10 rounded-3 p-3 me-3">
+                                                            <i class="bi bi-fire text-danger fs-4"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1">
+                                                            <h6 class="mb-0 fw-bold">Pro Pathway</h6>
+                                                            <small class="text-muted">Ages 16+ • 5x/week • $90/month</small>
+                                                        </div>
+                                                        <i class="bi bi-check-circle-fill text-primary fs-4 d-none check-icon"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="btn btn-primary w-100 mt-4" onclick="goToStep(3)" id="step2NextBtn" disabled>
+                                            Continue <i class="bi bi-arrow-right ms-1"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Step 3: Additional Info -->
+                                    <div id="step3" class="step-content d-none">
+                                        <h4 class="fw-bold mb-1">Almost Done!</h4>
+                                        <p class="text-muted mb-4">Tell us a bit more about the player</p>
+                                        
+                                        <form class="needs-validation" novalidate id="registrationForm">
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold">Player's Full Name</label>
+                                                    <input type="text" class="form-control form-control-lg" required placeholder="John Doe">
+                                                    <div class="invalid-feedback">Please enter the player's name.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold">Date of Birth</label>
+                                                    <input type="date" class="form-control form-control-lg" required>
+                                                    <div class="invalid-feedback">Please enter date of birth.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold">Phone Number</label>
+                                                    <input type="tel" class="form-control form-control-lg" required placeholder="+1 (555) 000-0000">
+                                                    <div class="invalid-feedback">Please enter a valid phone number.</div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="form-label fw-semibold">Experience Level</label>
+                                                    <select class="form-select form-select-lg" required>
+                                                        <option value="" selected disabled>Select level...</option>
+                                                        <option value="beginner">Beginner (0–1 years)</option>
+                                                        <option value="intermediate">Intermediate (1–3 years)</option>
+                                                        <option value="advanced">Advanced (3+ years)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="form-label fw-semibold">Medical Conditions (Optional)</label>
+                                                    <textarea class="form-control" rows="2" placeholder="Any allergies, conditions, or injuries we should know about..."></textarea>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                                        <label class="form-check-label" for="termsCheck">
+                                                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                                                        </label>
+                                                        <div class="invalid-feedback">You must agree before submitting.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <button type="submit" class="btn btn-success btn-lg w-100 mt-4 fw-bold">
+                                                <i class="bi bi-check-circle me-2"></i>Complete Registration
+                                            </button>
+                                        </form>
+                                    </div>
+                                    
+                                    <!-- Success State -->
+                                    <div id="successState" class="step-content d-none text-center py-4">
+                                        <div class="mb-4">
+                                            <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                                        </div>
+                                        <h4 class="fw-bold text-success">Registration Complete! 🎉</h4>
+                                        <p class="text-muted mb-4">
+                                            Welcome to Indra Football Academy! Check your email for next steps.
+                                        </p>
+                                        <a href="../index.html" class="btn btn-primary">
+                                            <i class="bi bi-house me-1"></i>Back to Home
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS (guard against load failure)
+        if (typeof AOS !== 'undefined') { AOS.init({ duration: 800, once: true }); }
+        
+        let selectedProgram = null;
+        
+        // Program Selection
+        function selectProgram(card) {
+            document.querySelectorAll('.program-select-card').forEach(c => {
+                c.classList.remove('selected');
+                c.querySelector('.check-icon').classList.add('d-none');
+            });
+            card.classList.add('selected');
+            card.querySelector('.check-icon').classList.remove('d-none');
+            selectedProgram = card.dataset.program;
+            document.getElementById('step2NextBtn').disabled = false;
+        }
+        
+        // Step Navigation
+        function goToStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(s => s.classList.add('d-none'));
+            
+            // Show target step
+            document.getElementById(`step${step}`).classList.remove('d-none');
+            
+            // Update indicators
+            for (let i = 1; i <= 3; i++) {
+                const dot = document.getElementById(`step${i}dot`);
+                const line = document.getElementById(`line${i}`);
+                
+                if (i < step) {
+                    dot.classList.remove('active');
+                    dot.classList.add('completed');
+                    dot.innerHTML = '<i class="bi bi-check"></i>';
+                    if (line) line.classList.add('active');
+                } else if (i === step) {
+                    dot.classList.add('active');
+                    dot.classList.remove('completed');
+                } else {
+                    dot.classList.remove('active', 'completed');
+                    dot.textContent = i;
+                }
+            }
+        }
+        
+        // Form Submission
+        document.getElementById('registrationForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (!this.checkValidity()) {
+                this.classList.add('was-validated');
+                return;
+            }
+            
+            // Show success
+            document.querySelectorAll('.step-content').forEach(s => s.classList.add('d-none'));
+            document.getElementById('successState').classList.remove('d-none');
+            
+            // Call Firebase registration
+            if (typeof registerForProgram === 'function') {
+                registerForProgram(selectedProgram);
+            }
+        });
+        
+        // Make functions available globally
+        window.selectProgram = selectProgram;
+        window.goToStep = goToStep;
+    </script>
+    
+    <script>
+        // Sign-in handlers — uses real Firebase Auth when available
+        function signInWithGoogle() {
+            if (typeof window.firebaseLogin === 'function') {
+                // Real Firebase auth available
+                window.firebaseLogin().then(() => {
+                    advanceToStep2();
+                }).catch(err => {
+                    alert('Sign-in failed: ' + err.message);
+                });
+            } else {
+                // Fallback: advance directly (Firebase loads via module on Live Server/Netlify)
+                advanceToStep2();
+            }
+        }
+        
+        function signInWithMicrosoft() {
+            if (typeof window.signInWithMicrosoft === 'function') {
+                window.signInWithMicrosoft().then(() => {
+                    advanceToStep2();
+                }).catch(err => {
+                    alert('Sign-in failed: ' + err.message);
+                });
+            } else {
+                advanceToStep2();
+            }
+        }
+        
+        function advanceToStep2() {
+            goToStep(2);
+            document.getElementById('step1dot').classList.add('completed');
+            document.getElementById('step1dot').innerHTML = '<i class="bi bi-check"></i>';
+        }
+    </script>
+    
+    <!-- Firebase Auth (works on Live Server / Netlify — not file:// protocol) -->
+    <script type="module" src="../js/firebase-config.js"></script>
+</body>
+</html>

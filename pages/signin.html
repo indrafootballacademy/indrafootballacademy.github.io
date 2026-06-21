@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Indra Football Academy</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animations.css" rel="stylesheet">
+    
+    <style>
+        .signin-section {
+            min-height: 100vh;
+            padding-top: 100px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        .auth-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .auth-sidebar {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .social-btn {
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #e9ecef;
+            background: white;
+            color: #333;
+        }
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .social-btn-google:hover { border-color: #4285F4; background: #f8f9ff; }
+        .social-btn-microsoft:hover { border-color: #00a4ef; background: #f0f9ff; }
+    </style>
+</head>
+<body>
+
+    <!-- FULL NAVIGATION BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" id="mainNavbar" style="background: rgba(15, 15, 26, 0.95); backdrop-filter: blur(20px);">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="bi bi-trophy-fill text-warning me-2"></i>
+                <span style="color: #ffc107;">IFA</span> Indra Football Academy
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#pageNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pageNav">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <a href="register.html" class="btn btn-warning btn-sm fw-semibold px-3 py-1">Register</a>
+                    <a href="signin.html" class="btn btn-outline-light btn-sm px-3 py-1">
+                        <i class="bi bi-person-circle me-1"></i>Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SIGN IN SECTION -->
+    <section class="signin-section">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-9">
+                    <div class="card auth-card border-0" data-aos="fade-up">
+                        <div class="row g-0">
+                            <!-- Left Sidebar -->
+                            <div class="col-lg-4 d-none d-lg-block">
+                                <div class="auth-sidebar h-100 text-white">
+                                    <div>
+                                        <h3 class="fw-bold mb-3">Welcome Back!</h3>
+                                        <p class="text-white-50 mb-4">
+                                            Sign in to access your coaching dashboard, track your progress, and manage registrations.
+                                        </p>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-3 d-flex align-items-center">
+                                                <i class="bi bi-shield-check text-warning me-2 fs-5"></i>
+                                                <small>Secure — no passwords stored</small>
+                                            </li>
+                                            <li class="mb-3 d-flex align-items-center">
+                                                <i class="bi bi-lightning text-warning me-2 fs-5"></i>
+                                                <small>One-click sign in</small>
+                                            </li>
+                                            <li class="mb-3 d-flex align-items-center">
+                                                <i class="bi bi-graph-up text-warning me-2 fs-5"></i>
+                                                <small>Track your progress</small>
+                                            </li>
+                                            <li class="mb-3 d-flex align-items-center">
+                                                <i class="bi bi-calendar-check text-warning me-2 fs-5"></i>
+                                                <small>View your schedule</small>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="mt-auto pt-4">
+                                        <small class="text-white-50">
+                                            <i class="bi bi-lock-fill me-1"></i>
+                                            Your data is encrypted and never shared
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Right Content -->
+                            <div class="col-lg-8">
+                                <div class="card-body p-4 p-lg-5">
+                                    <h4 class="fw-bold mb-1">Sign In to Your Account</h4>
+                                    <p class="text-muted mb-4">Choose your preferred sign-in method</p>
+                                    
+                                    <!-- Social Login Buttons -->
+                                    <button class="social-btn social-btn-google w-100 d-flex align-items-center justify-content-center gap-2 mb-3" onclick="signInWithGoogle()">
+                                        <svg width="20" height="20" viewBox="0 0 24 24">
+                                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                        </svg>
+                                        Continue with Google
+                                    </button>
+                                    
+                                    <button class="social-btn social-btn-microsoft w-100 d-flex align-items-center justify-content-center gap-2 mb-4" onclick="signInWithMicrosoft()">
+                                        <svg width="20" height="20" viewBox="0 0 24 24">
+                                            <rect fill="#F25022" x="1" y="1" width="10" height="10"/>
+                                            <rect fill="#7FBA00" x="13" y="1" width="10" height="10"/>
+                                            <rect fill="#00A4EF" x="1" y="13" width="10" height="10"/>
+                                            <rect fill="#FFB900" x="13" y="13" width="10" height="10"/>
+                                        </svg>
+                                        Continue with Microsoft / Outlook
+                                    </button>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <div class="text-center mb-3">
+                                        <small class="text-muted">
+                                            <i class="bi bi-shield-fill-check text-success me-1"></i>
+                                            Protected by OAuth 2.0 — your password stays with Google/Microsoft
+                                        </small>
+                                    </div>
+                                    
+                                    <div class="text-center">
+                                        <p class="text-muted mb-0">
+                                            Don't have an account? 
+                                            <a href="register.html" class="fw-semibold text-decoration-none text-primary">Register here</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <small class="text-white-50">© 2026 Indra Football Academy. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Minimal inline JS for sign-in page (avoids app.js loading issues)
+        if (typeof AOS !== 'undefined') AOS.init({ duration: 800, once: true });
+        
+        function signInWithGoogle() {
+            if (typeof window.firebaseLogin === 'function') {
+                window.firebaseLogin().then(() => {
+                    showSuccess('Google');
+                }).catch(err => {
+                    alert('Sign-in failed: ' + err.message);
+                });
+            } else {
+                showSuccess('Google');
+            }
+        }
+        
+        function signInWithMicrosoft() {
+            if (typeof window.signInWithMicrosoft === 'function') {
+                window.signInWithMicrosoft().then(() => {
+                    showSuccess('Microsoft');
+                }).catch(err => {
+                    alert('Sign-in failed: ' + err.message);
+                });
+            } else {
+                showSuccess('Microsoft');
+            }
+        }
+        
+        function showSuccess(provider) {
+            const content = document.querySelector('.col-lg-8 .card-body');
+            if (content) {
+                content.innerHTML = `
+                    <div class="text-center py-4">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                        <h4 class="fw-bold mt-3 text-success">Signed In Successfully!</h4>
+                        <p class="text-muted mt-2">Welcome back! You signed in with ${provider}.</p>
+                        <a href="../index.html" class="btn btn-primary btn-lg mt-3">
+                            <i class="bi bi-house me-2"></i>Go to Homepage
+                        </a>
+                    </div>`;
+            }
+        }
+    </script>
+    
+    <!-- Firebase Auth (works on Live Server / Netlify) -->
+    <script type="module" src="../js/firebase-config.js"></script>
+</body>
+</html>

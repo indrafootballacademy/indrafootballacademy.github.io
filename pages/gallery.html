@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Indra Football Academy</title>
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" rel="stylesheet">
+    <link href="[REDACTED_CONN_STRING]://400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/animations.css" rel="stylesheet">
+    
+    <style>
+        .gallery-page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+        }
+        .filter-btn {
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            background: #e9ecef;
+            color: #495057;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .gallery-grid {
+            column-count: 3;
+            column-gap: 15px;
+        }
+        .gallery-grid-item {
+            break-inside: avoid;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .gallery-grid-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .gallery-grid-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        .gallery-placeholder-img {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        @media (max-width: 991px) { .gallery-grid { column-count: 2; } }
+        @media (max-width: 575px) { .gallery-grid { column-count: 1; } }
+    </style>
+</head>
+<body>
+
+    <!-- FULL NAVIGATION BAR -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark" id="mainNavbar" style="background: rgba(15, 15, 26, 0.95); backdrop-filter: blur(20px);">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <i class="bi bi-trophy-fill text-warning me-2"></i>
+                <span style="color: #ffc107;">IFA</span> Indra Football Academy
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#pageNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="pageNav">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="schedule.html">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-2 flex-shrink-0">
+                    <a href="register.html" class="btn btn-warning btn-sm fw-semibold px-3 py-1">Register</a>
+                    <a href="signin.html" class="btn btn-outline-light btn-sm px-3 py-1">
+                        <i class="bi bi-person-circle me-1"></i>Sign In
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="gallery-page-hero text-white text-center">
+        <div class="container" data-aos="fade-up">
+            <span class="badge bg-warning text-dark px-3 py-2 mb-3">📸 GALLERY</span>
+            <h1 class="display-4 fw-bold mb-3">Life at IFA</h1>
+            <p class="fs-5 text-white-50 mx-auto" style="max-width: 600px;">
+                Capturing the energy, passion, and victories of our training sessions, matches, and events.
+            </p>
+        </div>
+    </section>
+
+    <!-- GALLERY CONTENT -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Filter Buttons -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-5" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="training">Training</button>
+                <button class="filter-btn" data-filter="matches">Matches</button>
+                <button class="filter-btn" data-filter="tournaments">Tournaments</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="facilities">Facilities</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid" id="galleryGrid" data-aos="fade-up" data-aos-delay="200">
+                <!-- Placeholder Items (Replace with real images from Cloudinary/Firebase Storage) -->
+                
+                <div class="gallery-grid-item" data-category="training">
+                    <div class="gallery-placeholder-img bg-success bg-opacity-10" style="height: 250px;">
+                        <i class="bi bi-image text-success fs-1"></i>
+                        <small class="text-success mt-2">Dribbling Drills</small>
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="bi bi-zoom-in text-white fs-2"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid-item" data-category="matches">
+                    <div class="gallery-placeholder-img bg-primary bg-opacity-10" style="height: 320px;">
+                        <i class="bi bi-image text-primary fs-1"></i>
+                        <small class="text-primary mt-2">League Match</small>
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="bi bi-zoom-in text-white fs-2"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid-item" data-category="tournaments">
+                    <div class="gallery-placeholder-img bg-warning bg-opacity-10" style="height: 280px;">
+                        <i class="bi bi-image text-warning fs-1"></i>
+                        <small class="text-warning mt-2">Summer Cup 2025</small>
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="bi bi-zoom-in text-white fs-2"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid-item" data-category="training">
+                    <div class="gallery-placeholder-img bg-info bg-opacity-10" style="height: 200px;">
+                        <i class="bi bi-image text-info fs-1"></i>
+                        <small class="text-info mt-2">Goalkeeping Session</small>
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="bi bi-zoom-in text-white fs-2"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid-item" data-category="events">
+                    <div class="gallery-placeholder-img bg-danger bg-opacity-10" style="height: 300px;">
+                        <i class="bi bi-image text-danger fs-1"></i>
+                        <small class="text-danger mt-2">Awards Night</small>
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="bi bi-zoom-in text-white fs-2"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid-item" data-category="facilities">
+                    <div class="gallery-placeholder-img bg-secondary bg-opacity-10" style="height: 240px;">
+                        <i class="bi bi-image text-secondary fs-1"></i>
+                        <small class="text-secondary mt-2">Main Pitch</small>
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="bi bi-zoom-in text-white fs-2"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid-item" data-category="matches">
+                    <div class="gallery-placeholder-img bg-success bg-opacity-10" style="height: 270px;">
+                        <i class="bi bi-image text-success fs-1"></i>
+                        <small class="text-success mt-2">Victory Celebration</small>
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="bi bi-zoom-in text-white fs-2"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid-item" data-category="training">
+                    <div class="gallery-placeholder-img bg-primary bg-opacity-10" style="height: 220px;">
+                        <i class="bi bi-image text-primary fs-1"></i>
+                        <small class="text-primary mt-2">Fitness Session</small>
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="bi bi-zoom-in text-white fs-2"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-grid-item" data-category="events">
+                    <div class="gallery-placeholder-img bg-warning bg-opacity-10" style="height: 260px;">
+                        <i class="bi bi-image text-warning fs-1"></i>
+                        <small class="text-warning mt-2">Open Day</small>
+                    </div>
+                    <div class="gallery-overlay">
+                        <i class="bi bi-zoom-in text-white fs-2"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More -->
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-primary btn-lg" id="loadMoreBtn">
+                    <i class="bi bi-arrow-down-circle me-2"></i>Load More Photos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <small class="text-white-50">© 2026 Indra Football Academy. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js"></script>
+    <script type="module" src="../js/firebase-config.js"></script>
+    
+    <script>
+        AOS.init({ duration: 800, once: true });
+        
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                const items = document.querySelectorAll('.gallery-grid-item');
+                
+                items.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeInUp 0.5s forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Initialize GLightbox (for when real images are added)
+        if (typeof GLightbox !== 'undefined') {
+            const lightbox = GLightbox({ selector: '.gallery-grid-item[data-glightbox]' });
+        }
+    </script>
+</body>
+</html>

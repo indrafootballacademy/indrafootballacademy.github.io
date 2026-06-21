@@ -1,0 +1,457 @@
+/* ============================================================
+   ProStrike Football Academy — Animation Styles
+   Advanced CSS Animations, Transitions, and Effects
+   ============================================================ */
+
+/* ============ HERO PARTICLES BACKGROUND ============ */
+.hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.hero-particles::before,
+.hero-particles::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    animation: float 8s infinite ease-in-out;
+}
+
+.hero-particles::before {
+    background: radial-gradient(circle, rgba(26, 115, 232, 0.15), transparent 70%);
+    top: 10%;
+    right: 10%;
+}
+
+.hero-particles::after {
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.1), transparent 70%);
+    bottom: 10%;
+    left: 5%;
+    animation-delay: -4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(20px, -30px) scale(1.05); }
+    50% { transform: translate(-10px, 20px) scale(0.95); }
+    75% { transform: translate(15px, 10px) scale(1.02); }
+}
+
+/* ============ COUNTER ANIMATION ============ */
+.counter {
+    transition: all 0.5s ease;
+}
+
+/* ============ FADE IN ANIMATIONS ============ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============ SCALE ANIMATIONS ============ */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ============ GLOW EFFECT ============ */
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(26, 115, 232, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(26, 115, 232, 0.6), 0 0 40px rgba(26, 115, 232, 0.2); }
+}
+
+.glow-effect {
+    animation: glow 2s infinite;
+}
+
+/* ============ TYPING EFFECT ============ */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--warning); }
+}
+
+.typing-effect {
+    overflow: hidden;
+    border-right: 3px solid var(--warning);
+    white-space: nowrap;
+    animation: typing 3s steps(30) 1s forwards, blink-caret 0.75s step-end infinite;
+}
+
+/* ============ CARD HOVER EFFECTS ============ */
+.card-hover-effect {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-10px) rotateX(2deg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* ============ RIPPLE EFFECT ============ */
+.ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.ripple:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* ============ PARALLAX LAYERS ============ */
+.parallax-layer {
+    transition: transform 0.1s linear;
+    will-change: transform;
+}
+
+/* ============ STAGGER ANIMATION ============ */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: 0.1s; }
+.stagger-item:nth-child(2) { animation-delay: 0.2s; }
+.stagger-item:nth-child(3) { animation-delay: 0.3s; }
+.stagger-item:nth-child(4) { animation-delay: 0.4s; }
+.stagger-item:nth-child(5) { animation-delay: 0.5s; }
+.stagger-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* ============ LOADING SPINNER ============ */
+.spinner-grow-custom {
+    width: 3rem;
+    height: 3rem;
+    animation: spinner-grow 1s linear infinite;
+}
+
+@keyframes spinner-grow {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+/* ============ IMAGE REVEAL ============ */
+.img-reveal {
+    position: relative;
+    overflow: hidden;
+}
+
+.img-reveal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--primary);
+    transform-origin: left;
+    animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes reveal {
+    0% { transform: scaleX(1); transform-origin: left; }
+    50% { transform: scaleX(1); transform-origin: right; }
+    100% { transform: scaleX(0); transform-origin: right; }
+}
+
+/* ============ MORPHING SHAPES ============ */
+.morph-shape {
+    animation: morph 8s ease-in-out infinite;
+}
+
+@keyframes morph {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    50% { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+    75% { border-radius: 60% 40% 60% 30% / 60% 40% 30% 70%; }
+}
+
+/* ============ SMOOTH SCROLL PROGRESS BAR ============ */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--gradient-warning);
+    z-index: 9999;
+    transition: width 0.1s linear;
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .hero-particles::before,
+    .hero-particles::after {
+        animation: none;
+    }
+}
+
+/* ============ ADVANCED GRADIENT TEXT SHIMMER ============ */
+.text-gradient {
+    background: linear-gradient(
+        120deg, 
+        #ffc107 0%, 
+        #ff8c00 25%, 
+        #ffd54f 50%, 
+        #ff8c00 75%, 
+        #ffc107 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textShimmer 3s linear infinite;
+}
+
+@keyframes textShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* ============ NEON GLOW BUTTONS ============ */
+.btn-warning {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-warning::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn-warning:hover::before {
+    opacity: 1;
+    animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+/* ============ FLOATING BADGE ANIMATION ============ */
+.hero-section .badge {
+    animation: floatBadge 3s ease-in-out infinite;
+}
+
+@keyframes floatBadge {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* ============ STAT COUNTER GLOW ============ */
+.stat-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffc107, transparent);
+    animation: scanLine 2s linear infinite;
+}
+
+@keyframes scanLine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ============ 3D CARD TILT EFFECT ============ */
+.program-card {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.program-card:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(-1deg);
+}
+
+/* ============ AURORA BOREALIS (for dark sections) ============ */
+.aurora-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.aurora-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        from 0deg at 50% 50%,
+        rgba(26, 115, 232, 0) 0deg,
+        rgba(26, 115, 232, 0.05) 60deg,
+        rgba(40, 167, 69, 0.05) 120deg,
+        rgba(255, 193, 7, 0.03) 180deg,
+        rgba(111, 66, 193, 0.05) 240deg,
+        rgba(26, 115, 232, 0.05) 300deg,
+        rgba(26, 115, 232, 0) 360deg
+    );
+    animation: auroraRotate 20s linear infinite;
+    z-index: 0;
+}
+
+@keyframes auroraRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============ DECORATIVE FLOATING DOTS ============ */
+.floating-dots {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-dots span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: floatDot 8s ease-in-out infinite;
+}
+
+.floating-dots span:nth-child(1) { left: 10%; top: 20%; background: #28a745; animation-delay: 0s; }
+.floating-dots span:nth-child(2) { left: 25%; top: 60%; background: #1a73e8; animation-delay: -2s; }
+.floating-dots span:nth-child(3) { left: 50%; top: 30%; background: #ffc107; animation-delay: -4s; }
+.floating-dots span:nth-child(4) { left: 70%; top: 70%; background: #6f42c1; animation-delay: -1s; }
+.floating-dots span:nth-child(5) { left: 85%; top: 40%; background: #dc3545; animation-delay: -3s; }
+.floating-dots span:nth-child(6) { left: 40%; top: 80%; background: #17a2b8; animation-delay: -5s; }
+
+@keyframes floatDot {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+    25% { transform: translate(10px, -15px) scale(1.5); opacity: 0.5; }
+    50% { transform: translate(-5px, -25px) scale(1); opacity: 0.4; }
+    75% { transform: translate(8px, -10px) scale(1.3); opacity: 0.3; }
+}
+
+/* ============ SECTION DIVIDER WAVE ============ */
+.section-wave {
+    position: relative;
+}
+
+.section-wave::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23ffffff' d='M0,30 C360,60 720,0 1080,30 C1260,45 1380,40 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E") no-repeat;
+    background-size: cover;
+}
+
+/* ============ GRADIENT BORDER CARDS ============ */
+.gradient-border {
+    position: relative;
+    border: none !important;
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #1a73e8, #28a745, #ffc107, #dc3545);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.gradient-border:hover::before {
+    opacity: 0.6;
+}
