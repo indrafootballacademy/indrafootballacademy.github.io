@@ -28,7 +28,7 @@
 }
 
 .hero-particles::after {
-    background: radial-gradient(circle, rgba(247, 181, 205, 0.1), transparent 70%);
+    background: radial-gradient(circle, rgba(233, 30, 99, 0.1), transparent 70%);
     bottom: 10%;
     left: 5%;
     animation-delay: -4s;
@@ -267,11 +267,11 @@
 .text-gradient {
     background: linear-gradient(
         120deg, 
-        #F7B5CD 0%, 
+        #E91E63 0%, 
         #E91E63 25%, 
         #ffd54f 50%, 
         #E91E63 75%, 
-        #F7B5CD 100%
+        #E91E63 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -336,7 +336,7 @@
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #F7B5CD, transparent);
+    background: linear-gradient(90deg, transparent, #E91E63, transparent);
     animation: scanLine 2s linear infinite;
 }
 
@@ -373,7 +373,7 @@
         rgba(26, 115, 232, 0) 0deg,
         rgba(26, 115, 232, 0.05) 60deg,
         rgba(40, 167, 69, 0.05) 120deg,
-        rgba(247, 181, 205, 0.03) 180deg,
+        rgba(233, 30, 99, 0.03) 180deg,
         rgba(111, 66, 193, 0.05) 240deg,
         rgba(26, 115, 232, 0.05) 300deg,
         rgba(26, 115, 232, 0) 360deg
@@ -407,7 +407,7 @@
 
 .floating-dots span:nth-child(1) { left: 10%; top: 20%; background: #28a745; animation-delay: 0s; }
 .floating-dots span:nth-child(2) { left: 25%; top: 60%; background: #1a73e8; animation-delay: -2s; }
-.floating-dots span:nth-child(3) { left: 50%; top: 30%; background: #F7B5CD; animation-delay: -4s; }
+.floating-dots span:nth-child(3) { left: 50%; top: 30%; background: #E91E63; animation-delay: -4s; }
 .floating-dots span:nth-child(4) { left: 70%; top: 70%; background: #6f42c1; animation-delay: -1s; }
 .floating-dots span:nth-child(5) { left: 85%; top: 40%; background: #dc3545; animation-delay: -3s; }
 .floating-dots span:nth-child(6) { left: 40%; top: 80%; background: #17a2b8; animation-delay: -5s; }
@@ -446,7 +446,7 @@
     position: absolute;
     inset: -2px;
     border-radius: inherit;
-    background: linear-gradient(135deg, #1a73e8, #28a745, #F7B5CD, #dc3545);
+    background: linear-gradient(135deg, #1a73e8, #28a745, #E91E63, #dc3545);
     z-index: -1;
     opacity: 0;
     transition: opacity 0.4s;

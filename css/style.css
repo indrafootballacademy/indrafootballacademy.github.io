@@ -9,7 +9,7 @@
     --primary-dark: #1557b0;
     --secondary: #ff6b35;
     --success: #28a745;
-    --warning: #F7B5CD;
+    --warning: #E91E63;
     --danger: #dc3545;
     --dark: #1a1a2e;
     --darker: #0f0f1a;
@@ -19,7 +19,7 @@
     --gradient-primary: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
     --gradient-hero: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
     --gradient-success: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-    --gradient-warning: linear-gradient(135deg, #F7B5CD 0%, #E91E63 100%);
+    --gradient-warning: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
     
     --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
     --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
@@ -79,7 +79,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ============ UTILITY CLASSES ============ */
 .text-gradient {
-    background: linear-gradient(135deg, #F7B5CD, #E91E63);
+    background: linear-gradient(135deg, #E91E63, #C2185B);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -300,11 +300,11 @@ h1, h2, h3, h4, h5, h6 {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background: rgba(247, 181, 205, 0.1);
+    background: rgba(233, 30, 99, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgba(247, 181, 205, 0.3);
+    border: 2px solid rgba(233, 30, 99, 0.3);
 }
 
 /* ============ TESTIMONIALS ============ */
@@ -377,7 +377,7 @@ footer a:hover {
 
 .btn-warning:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(247, 181, 205, 0.4);
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
 }
 
 .btn-primary:hover {
@@ -717,64 +717,82 @@ button {
 }
 
 /* ============ INTER MIAMI PINK THEME OVERRIDE ============ */
+/* Accent pink for text/icons */
 .text-warning {
     color: #F7B5CD !important;
 }
 
 .bg-warning {
-    background-color: #F7B5CD !important;
+    background-color: #E91E63 !important;
 }
 
+/* Buttons: vibrant hot pink */
 .btn-warning {
-    --bs-btn-color: #1a1a2e;
-    --bs-btn-bg: #F7B5CD;
-    --bs-btn-border-color: #F7B5CD;
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #E91E63;
+    --bs-btn-border-color: #E91E63;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #E91E63;
-    --bs-btn-hover-border-color: #E91E63;
+    --bs-btn-hover-bg: #C2185B;
+    --bs-btn-hover-border-color: #C2185B;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #C2185B;
-    --bs-btn-active-border-color: #C2185B;
-    --bs-btn-disabled-color: #1a1a2e;
-    --bs-btn-disabled-bg: #F7B5CD;
-    --bs-btn-disabled-border-color: #F7B5CD;
-    background-color: #F7B5CD !important;
-    border-color: #F7B5CD !important;
-    color: #1a1a2e !important;
-}
-
-.btn-warning:hover {
+    --bs-btn-active-bg: #AD1457;
+    --bs-btn-active-border-color: #AD1457;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #F48FB1;
+    --bs-btn-disabled-border-color: #F48FB1;
     background-color: #E91E63 !important;
     border-color: #E91E63 !important;
     color: #fff !important;
 }
 
+.btn-warning:hover {
+    background-color: #C2185B !important;
+    border-color: #C2185B !important;
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.5) !important;
+}
+
 .btn-outline-warning {
-    --bs-btn-color: #F7B5CD;
-    --bs-btn-border-color: #F7B5CD;
-    --bs-btn-hover-color: #1a1a2e;
-    --bs-btn-hover-bg: #F7B5CD;
-    --bs-btn-hover-border-color: #F7B5CD;
-    border-color: #F7B5CD !important;
-    color: #F7B5CD !important;
+    --bs-btn-color: #E91E63;
+    --bs-btn-border-color: #E91E63;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #E91E63;
+    --bs-btn-hover-border-color: #E91E63;
+    border-color: #E91E63 !important;
+    color: #E91E63 !important;
 }
 
 .btn-outline-warning:hover {
-    background-color: #F7B5CD !important;
-    border-color: #F7B5CD !important;
-    color: #1a1a2e !important;
+    background-color: #E91E63 !important;
+    border-color: #E91E63 !important;
+    color: #fff !important;
 }
 
 .border-warning {
-    border-color: #F7B5CD !important;
+    border-color: #E91E63 !important;
 }
 
-/* Nav link active/hover - pink underline */
+/* Nav link active/hover - hot pink */
 .nav-link:hover,
 .nav-link.active {
-    color: #F7B5CD !important;
+    color: #E91E63 !important;
 }
 
 .nav-link::after {
-    background: #F7B5CD !important;
+    background: #E91E63 !important;
+}
+
+/* Card hover glow */
+.hover-lift:hover {
+    box-shadow: 0 8px 40px rgba(233, 30, 99, 0.2) !important;
+}
+
+/* Footer links hover */
+footer a:hover {
+    color: #E91E63 !important;
+}
+
+.social-icons a:hover {
+    color: #E91E63 !important;
 }
