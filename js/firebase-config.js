@@ -14,10 +14,12 @@
 
 // Firebase SDK Imports (ES Modules)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { 
-    getAuth, 
-    signInWithPopup, 
-    signOut, 
+import {
+    getAuth,
+    signInWithPopup,
+    signInWithRedirect,
+    getRedirectResult,
+    signOut,
     onAuthStateChanged,
     GoogleAuthProvider,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -83,11 +85,28 @@ async function signInWithGoogle() {
         
         return user;
     } catch (error) {
-        console.error('Google sign-in error:', error);
-        showAuthToast('Sign-in failed. Please try again.', 'danger');
-        throw error;
+        // If popup blocked or fails, try redirect method
+        if (error.code === 'auth/popup-blocked' || error.code === 'auth/popup-closed-by-user') {
+            console.log('Popup failed, trying redirect...');
+            await signInWithRedirect(auth, googleProvider);
+            return null; // page will reload after redirect
+        } else {
+            console.error('Google sign-in error:', error);
+            showAuthToast('Sign-in failed. Please try again.', 'danger');
+            throw error;
+        }
     }
 }
+
+// Handle redirect result (when page reloads after redirect sign-in)
+getRedirectResult(auth).then((result) => {
+    if (result && result.user) {
+        saveUserProfile(result.user);
+        updateUIForLoggedInUser(result.user);
+    }
+}).catch((error) => {
+    console.error('Redirect sign-in error:', error);
+});
 
 logOut,
     registerForProgram,
