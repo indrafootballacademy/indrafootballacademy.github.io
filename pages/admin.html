@@ -1209,17 +1209,15 @@
         // Real Firebase Storage upload
         // For now, show success feedback
         // Upload to Cloudinary (free, no card needed)
-        var CLOUDINARY_CLOUD_NAME = localStorage.getItem('cloudinary_cloud') || '';
+        var CLOUDINARY_CLOUD_NAME = 'dco1leevs';
         var CLOUDINARY_PRESET = localStorage.getItem('cloudinary_preset') || '';
         
-        if (!CLOUDINARY_CLOUD_NAME || !CLOUDINARY_PRESET) {
-            CLOUDINARY_CLOUD_NAME = prompt('Enter your Cloudinary Cloud Name:\n(Get it from cloudinary.com/console)');
-            CLOUDINARY_PRESET = prompt('Enter your Cloudinary Upload Preset:\n(Create one in Settings → Upload → Unsigned)');
-            if (CLOUDINARY_CLOUD_NAME && CLOUDINARY_PRESET) {
-                localStorage.setItem('cloudinary_cloud', CLOUDINARY_CLOUD_NAME);
+        if (!CLOUDINARY_PRESET) {
+            CLOUDINARY_PRESET = prompt('Enter your Cloudinary Upload Preset name:\n\nTo create one:\n1. Go to cloudinary.com → Settings → Upload\n2. Click "Add upload preset"\n3. Set Signing Mode to "Unsigned"\n4. Name it (e.g. ifa_gallery)\n5. Save and enter the name here:');
+            if (CLOUDINARY_PRESET) {
                 localStorage.setItem('cloudinary_preset', CLOUDINARY_PRESET);
             } else {
-                alert('Cloudinary setup required. See Settings → Gallery Setup.');
+                alert('Upload preset required. Create one in Cloudinary Settings → Upload.');
                 return;
             }
         }
