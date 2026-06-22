@@ -441,5 +441,68 @@
         });
     </script>
 
+
+    <!-- Firebase for loading gallery images -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDMhwa7bxclPaeW44agM8s-FRVQxkbTAuU",
+            authDomain: "indra-football-academy.firebaseapp.com",
+            projectId: "indra-football-academy",
+            storageBucket: "indra-football-academy.firebasestorage.app",
+            messagingSenderId: "794774125541",
+            appId: "1:794774125541:web:54bb5c00c61e10b3b38d0c"
+        };
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+        
+        // Load gallery from Firestore
+        function loadPublicGallery() {
+            db.collection('gallery').orderBy('uploadedAt', 'desc').get().then(function(snapshot) {
+                if (snapshot.empty) return;
+                
+                var container = document.getElementById('galleryContainer');
+                if (!container) return;
+                
+                var html = '';
+                snapshot.forEach(function(doc) {
+                    var data = doc.data();
+                    html += '<div class="col-6 col-md-4 col-lg-3 gallery-public-item" data-category="' + (data.category || '') + '">' +
+                        '<div class="rounded-4 overflow-hidden shadow-sm" style="height:220px;">' +
+                            '<img src="' + data.url + '" class="w-100 h-100" style="object-fit:cover;" alt="' + (data.category || 'Gallery') + '">' +
+                        '</div>' +
+                    '</div>';
+                });
+                container.innerHTML = html;
+            }).catch(function(err) {
+                console.log('Gallery load error:', err);
+            });
+        }
+        
+        // Filter gallery
+        function filterPublicGallery(category, btn) {
+            // Update active button
+            document.querySelectorAll('.gallery-filter-btn').forEach(function(b) {
+                b.classList.remove('active');
+                b.style.background = '#fff';
+                b.style.color = '#231F20';
+            });
+            btn.classList.add('active');
+            btn.style.background = '#FF69B4';
+            btn.style.color = '#fff';
+            
+            // Filter items
+            document.querySelectorAll('.gallery-public-item').forEach(function(item) {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+        
+        loadPublicGallery();
+    </script>
 </body>
 </html>

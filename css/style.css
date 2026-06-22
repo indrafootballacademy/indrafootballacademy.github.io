@@ -976,3 +976,68 @@ a:hover {
     border-color: #FF69B4 !important;
     color: #fff !important;
 }
+
+
+/* ============ ABSOLUTE BLUE KILLER — NO BLUE ANYWHERE ============ */
+/* Pagination */
+.page-link {
+    color: #231F20 !important;
+    border-color: #dee2e6 !important;
+}
+.page-item.active .page-link {
+    background-color: #FF69B4 !important;
+    border-color: #FF69B4 !important;
+    color: #fff !important;
+}
+.page-link:hover {
+    background-color: #FF69B4 !important;
+    color: #fff !important;
+    border-color: #FF69B4 !important;
+}
+
+/* Alerts — info/teal/blue → rose pink subtle */
+.alert-info {
+    background-color: rgba(255, 105, 180, 0.1) !important;
+    border-color: rgba(255, 105, 180, 0.3) !important;
+    color: #231F20 !important;
+}
+
+/* btn-outline-primary (still blue in some places) */
+.btn-outline-primary {
+    border-color: #231F20 !important;
+    color: #231F20 !important;
+    background: #fff !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:active,
+.btn-outline-primary.active {
+    background-color: #FF69B4 !important;
+    border-color: #FF69B4 !important;
+    color: #fff !important;
+}
+
+/* Filter/toggle button group — only active one is pink */
+.btn-group .btn-outline-primary {
+    background: #fff !important;
+    color: #231F20 !important;
+    border-color: #231F20 !important;
+}
+.btn-group .btn-outline-primary.active,
+.btn-group .btn-outline-primary:active {
+    background: #FF69B4 !important;
+    color: #fff !important;
+    border-color: #FF69B4 !important;
+}
+
+/* List group active */
+.list-group-item.active {
+    background-color: #FF69B4 !important;
+    border-color: #FF69B4 !important;
+}
+
+/* Nav tabs/pills active */
+.nav-link.active,
+.nav-pills .nav-link.active {
+    background-color: #FF69B4 !important;
+    color: #fff !important;
+}

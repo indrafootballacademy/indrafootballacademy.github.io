@@ -218,6 +218,7 @@
     </section>
 
     <!-- SCHEDULE -->
+    <div id="scheduleContainer" class="container mt-4"></div>
     <section class="py-5">
         <div class="container py-4">
             <div class="row justify-content-center">
@@ -396,7 +397,7 @@
             
             <!-- Note -->
             <div class="text-center mt-4" data-aos="fade-up">
-                <div class="alert alert-info d-inline-block">
+                <div class="alert alert-light border d-inline-block">
                     <i class="bi bi-info-circle me-2"></i>
                     Schedule may vary during school holidays. Check our social media for updates.
                 </div>
@@ -467,5 +468,45 @@
         });
     </script>
 
+
+    <!-- Firebase for loading schedule -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDMhwa7bxclPaeW44agM8s-FRVQxkbTAuU",
+            authDomain: "indra-football-academy.firebaseapp.com",
+            projectId: "indra-football-academy",
+            storageBucket: "indra-football-academy.firebasestorage.app",
+            messagingSenderId: "794774125541",
+            appId: "1:794774125541:web:54bb5c00c61e10b3b38d0c"
+        };
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+        
+        function loadPublicSchedule() {
+            db.collection('schedule').get().then(function(snapshot) {
+                if (snapshot.empty) return;
+                
+                var container = document.getElementById('scheduleContainer');
+                if (!container) return;
+                
+                var html = '<div class="table-responsive"><table class="table table-hover bg-white rounded-3 overflow-hidden shadow-sm">' +
+                    '<thead style="background:#231F20; color:#fff;"><tr><th>Day</th><th>Time</th><th>Session</th></tr></thead><tbody>';
+                
+                snapshot.forEach(function(doc) {
+                    var s = doc.data();
+                    html += '<tr><td class="fw-semibold">' + (s.day || '') + '</td><td>' + (s.time || '') + '</td><td>' + (s.session || '') + '</td></tr>';
+                });
+                
+                html += '</tbody></table></div>';
+                container.innerHTML = html;
+            }).catch(function(err) {
+                console.log('Schedule load error:', err);
+            });
+        }
+        
+        loadPublicSchedule();
+    </script>
 </body>
 </html>
