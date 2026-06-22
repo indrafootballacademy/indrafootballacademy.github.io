@@ -120,6 +120,15 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
     
+    // ============ TESTIMONIALS ============
+    match /testimonials/{testimonialId} {
+      // Anyone can read testimonials (shown on homepage)
+      allow read: if true;
+      
+      // Super admin and elevated sub-admin can manage testimonials
+      allow write: if isSuperOrElevated();
+    }
+    
     // ============ ADMIN SETTINGS ============
     match /settings/{docId} {
       // Super admin and elevated sub-admin can write settings

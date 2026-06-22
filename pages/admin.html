@@ -390,6 +390,9 @@
             <a class="nav-link" href="#" data-section="settings">
                 <i class="bi bi-people"></i>User Management
             </a>
+            <a class="nav-link" href="#" data-section="testimonials">
+                <i class="bi bi-chat-quote"></i>Testimonials
+            </a>
             <a class="nav-link" href="#" data-section="team">
                 <i class="bi bi-person-video3"></i>Team & About
             </a>
@@ -836,7 +839,58 @@
         </div>
 
         <!-- ============ TEAM & ABOUT SECTION ============ -->
-        <div class="section-content d-none" id="section-team">
+        
+        <!-- ============ TESTIMONIALS SECTION ============ -->
+        <div id="section-testimonials" class="d-none">
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="border rounded-3 p-4">
+                        <h6 class="fw-bold mb-3"><i class="bi bi-chat-quote-fill me-2"></i>Manage Testimonials</h6>
+                        <p class="text-muted small">Add, edit, or remove testimonials shown on the homepage.</p>
+                        
+                        <div id="testimonialsList" class="mb-4">
+                            <!-- Loaded from Firestore -->
+                            <p class="text-muted fst-italic">Loading testimonials...</p>
+                        </div>
+                        
+                        <hr>
+                        <h6 class="fw-bold mb-3"><i class="bi bi-plus-circle me-2"></i>Add New Testimonial</h6>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Name</label>
+                                <input type="text" class="form-control" id="newTestimonialName" placeholder="e.g. Sarah Johnson">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Role</label>
+                                <input type="text" class="form-control" id="newTestimonialRole" placeholder="e.g. Parent — U12 Program">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label fw-semibold">Stars (1-5)</label>
+                                <select class="form-select" id="newTestimonialStars">
+                                    <option value="5">★★★★★ (5)</option>
+                                    <option value="4">★★★★☆ (4)</option>
+                                    <option value="3">★★★☆☆ (3)</option>
+                                    <option value="2">★★☆☆☆ (2)</option>
+                                    <option value="1">★☆☆☆☆ (1)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-10">
+                                <label class="form-label fw-semibold">Quote</label>
+                                <textarea class="form-control" rows="2" id="newTestimonialQuote" placeholder="Their testimonial text..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-dark" onclick="addTestimonial()">
+                                    <i class="bi bi-plus-lg me-2"></i>Add Testimonial
+                                </button>
+                            </div>
+                        </div>
+                        <div id="testimonialMsg" class="alert d-none mt-3 small"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="section-content d-none" id="section-team">
             <div class="admin-panel">
                 <h5 class="mb-4"><i class="bi bi-person-video3 me-2"></i>Manage Team & About Page</h5>
                 <p class="text-muted small">Update coach photos, names, and details. Changes reflect on the About page.</p>
@@ -1061,6 +1115,7 @@
             schedule: 'Schedule',
             messages: 'Messages',
             settings: 'User Management',
+            testimonials: 'Testimonials',
             team: 'Team & About Page'
         };
         document.getElementById('sectionTitle').textContent = titles[sectionName] || 'Dashboard';
@@ -1526,6 +1581,103 @@
     
     // Call loadTeamData when page loads (after auth check)
     setTimeout(loadTeamData, 2000);
+
+
+    // ============ TESTIMONIALS MANAGEMENT ============
+    var testimonials = [];
+    
+    function loadTestimonials() {
+        if (typeof db === 'undefined') return;
+        db.collection('testimonials').orderBy('createdAt', 'desc').get().then(function(snapshot) {
+            testimonials = [];
+            snapshot.forEach(function(doc) {
+                testimonials.push({ id: doc.id, ...doc.data() });
+            });
+            renderTestimonials();
+        }).catch(function(err) {
+            console.error('Error loading testimonials:', err);
+            document.getElementById('testimonialsList').innerHTML = 
+                '<p class="text-muted">No testimonials yet. Add your first one below.</p>';
+        });
+    }
+    
+    function renderTestimonials() {
+        var container = document.getElementById('testimonialsList');
+        if (testimonials.length === 0) {
+            container.innerHTML = '<p class="text-muted fst-italic">No testimonials yet. Add your first one below.</p>';
+            return;
+        }
+        
+        var html = '<div class="row g-3">';
+        testimonials.forEach(function(t) {
+            var stars = '★'.repeat(t.stars || 5) + '☆'.repeat(5 - (t.stars || 5));
+            html += '<div class="col-md-4">' +
+                '<div class="border rounded-3 p-3 position-relative">' +
+                    '<button class="btn btn-sm btn-outline-danger position-absolute top-0 end-0 m-2" onclick="deleteTestimonial(\''+t.id+'\')"><i class="bi bi-trash"></i></button>' +
+                    '<div class="text-warning mb-2">' + stars + '</div>' +
+                    '<p class="fst-italic small">"' + (t.quote || '') + '"</p>' +
+                    '<strong class="small">' + (t.name || '') + '</strong><br>' +
+                    '<small class="text-muted">' + (t.role || '') + '</small>' +
+                '</div>' +
+            '</div>';
+        });
+        html += '</div>';
+        container.innerHTML = html;
+    }
+    
+    function addTestimonial() {
+        var name = document.getElementById('newTestimonialName').value.trim();
+        var role = document.getElementById('newTestimonialRole').value.trim();
+        var stars = parseInt(document.getElementById('newTestimonialStars').value);
+        var quote = document.getElementById('newTestimonialQuote').value.trim();
+        
+        if (!name || !quote) {
+            alert('Please fill in at least the name and quote.');
+            return;
+        }
+        
+        if (typeof db === 'undefined') {
+            alert('Database not connected.');
+            return;
+        }
+        
+        db.collection('testimonials').add({
+            name: name,
+            role: role,
+            stars: stars,
+            quote: quote,
+            createdAt: new Date().toISOString()
+        }).then(function() {
+            var msg = document.getElementById('testimonialMsg');
+            msg.className = 'alert alert-success mt-3 small';
+            msg.textContent = '✅ Testimonial added!';
+            msg.classList.remove('d-none');
+            
+            // Clear form
+            document.getElementById('newTestimonialName').value = '';
+            document.getElementById('newTestimonialRole').value = '';
+            document.getElementById('newTestimonialQuote').value = '';
+            
+            // Reload
+            loadTestimonials();
+            setTimeout(function() { msg.classList.add('d-none'); }, 3000);
+        }).catch(function(err) {
+            alert('Error: ' + err.message);
+        });
+    }
+    
+    function deleteTestimonial(id) {
+        if (confirm('Delete this testimonial?')) {
+            db.collection('testimonials').doc(id).delete().then(function() {
+                loadTestimonials();
+            }).catch(function(err) {
+                alert('Error: ' + err.message);
+            });
+        }
+    }
+    
+    // Load testimonials on page open
+    setTimeout(loadTestimonials, 2500);
 
 </script>
     
