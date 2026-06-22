@@ -942,3 +942,37 @@ a:hover {
 #mainNavbar .nav-link::after {
     background: #FF69B4 !important;
 }
+
+
+/* ============ KILL ALL BOOTSTRAP BLUE FOCUS/ACTIVE STATES ============ */
+*:focus,
+*:active {
+    outline-color: #FF69B4 !important;
+}
+
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn:focus-visible,
+.btn-check:checked + .btn,
+.btn-check:active + .btn {
+    box-shadow: 0 0 0 0.25rem rgba(255, 105, 180, 0.25) !important;
+    border-color: #FF69B4 !important;
+}
+
+.btn-outline-primary:active,
+.btn-outline-primary.active,
+.btn-primary:active,
+.btn-primary.active,
+.btn-check:checked + .btn-primary {
+    background-color: #FF69B4 !important;
+    border-color: #FF69B4 !important;
+    color: #fff !important;
+}
+
+.btn-group .btn.active,
+.btn-group .btn:active {
+    background-color: #FF69B4 !important;
+    border-color: #FF69B4 !important;
+    color: #fff !important;
+}
