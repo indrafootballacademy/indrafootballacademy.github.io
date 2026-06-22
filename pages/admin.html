@@ -1210,17 +1210,7 @@
         // For now, show success feedback
         // Upload to Cloudinary (free, no card needed)
         var CLOUDINARY_CLOUD_NAME = 'dco1leevs';
-        var CLOUDINARY_PRESET = localStorage.getItem('cloudinary_preset') || '';
-        
-        if (!CLOUDINARY_PRESET) {
-            CLOUDINARY_PRESET = prompt('Enter your Cloudinary Upload Preset name:\n\nTo create one:\n1. Go to cloudinary.com → Settings → Upload\n2. Click "Add upload preset"\n3. Set Signing Mode to "Unsigned"\n4. Name it (e.g. ifa_gallery)\n5. Save and enter the name here:');
-            if (CLOUDINARY_PRESET) {
-                localStorage.setItem('cloudinary_preset', CLOUDINARY_PRESET);
-            } else {
-                alert('Upload preset required. Create one in Cloudinary Settings → Upload.');
-                return;
-            }
-        }
+        var CLOUDINARY_PRESET = 'ifa_gallery';
         
         var uploaded = 0;
         var total = selectedFiles.length;
