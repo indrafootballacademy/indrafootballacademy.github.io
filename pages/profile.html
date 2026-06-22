@@ -88,6 +88,89 @@
         /* Fallback: show content even if AOS/JS fails */
         [data-aos] { opacity: 1 !important; transform: none !important; }
     </style>
+
+    <!-- Inter Miami CF Color Override -->
+    <style>
+        :root {
+            --bs-primary: #F5B6CD !important;
+            --bs-success: #F5B6CD !important;
+            --bs-danger: #F5B6CD !important;
+            --bs-warning: #F5B6CD !important;
+            --bs-dark: #231F20 !important;
+            --bs-light: #FFFFFF !important;
+        }
+        .btn-dark {
+            background-color: #231F20 !important;
+            border-color: #231F20 !important;
+            color: #FFFFFF !important;
+        }
+        .btn-dark:hover {
+            background-color: #F5B6CD !important;
+            border-color: #F5B6CD !important;
+            color: #000000 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 182, 205, 0.4);
+        }
+        .btn-outline-light:hover {
+            background-color: #F5B6CD !important;
+            border-color: #F5B6CD !important;
+            color: #000000 !important;
+        }
+        .btn-primary, .btn-success, .btn-danger, .btn-warning {
+            background-color: #231F20 !important;
+            border-color: #231F20 !important;
+            color: #FFFFFF !important;
+        }
+        .btn-primary:hover, .btn-success:hover, .btn-danger:hover, .btn-warning:hover {
+            background-color: #F5B6CD !important;
+            border-color: #F5B6CD !important;
+            color: #000000 !important;
+        }
+        .btn-outline-dark {
+            border-color: #231F20 !important;
+            color: #231F20 !important;
+        }
+        .btn-outline-dark:hover {
+            background-color: #231F20 !important;
+            color: #FFFFFF !important;
+        }
+        .bg-dark {
+            background-color: #231F20 !important;
+        }
+        .text-primary, .text-success, .text-danger, .text-warning {
+            color: #F5B6CD !important;
+        }
+        .text-dark {
+            color: #231F20 !important;
+        }
+        .badge.bg-primary, .badge.bg-success, .badge.bg-danger, .badge.bg-warning {
+            background-color: #F5B6CD !important;
+            color: #000000 !important;
+        }
+        footer {
+            background: #000000 !important;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #F5B6CD !important;
+        }
+        .brand-text {
+            color: #F5B6CD !important;
+        }
+        #mainNavbar.scrolled {
+            background: rgba(35, 31, 32, 0.97) !important;
+        }
+        .form-control:focus {
+            border-color: #F5B6CD !important;
+            box-shadow: 0 0 0 0.2rem rgba(245, 182, 205, 0.25) !important;
+        }
+        a {
+            color: #231F20;
+        }
+        a:hover {
+            color: #F5B6CD;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -129,7 +212,7 @@
                         <i class="bi bi-person-x text-muted" style="font-size: 4rem;"></i>
                         <h4 class="fw-bold mt-3">Not Signed In</h4>
                         <p class="text-muted">Please sign in to view your profile.</p>
-                        <a href="signin.html" class="btn btn-primary btn-lg mt-2">
+                        <a href="signin.html" class="btn btn-dark btn-lg mt-2">
                             <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
                         </a>
                     </div>
@@ -152,7 +235,7 @@
                             <h6 class="fw-bold text-muted text-uppercase small mb-3">Account Information</h6>
                             
                             <div class="info-item">
-                                <div class="info-icon bg-primary bg-opacity-10 text-primary">
+                                <div class="info-icon bg-primary bg-opacity-10 text-dark">
                                     <i class="bi bi-person-fill"></i>
                                 </div>
                                 <div class="flex-grow-1">
@@ -162,14 +245,14 @@
                             </div>
                             
                             <div class="info-item">
-                                <div class="info-icon bg-success bg-opacity-10 text-success">
+                                <div class="info-icon bg-success bg-opacity-10 text-dark">
                                     <i class="bi bi-envelope-fill"></i>
                                 </div>
                                 <div class="flex-grow-1">
                                     <small class="text-muted d-block">Email</small>
                                     <span class="fw-semibold" id="infoEmail">—</span>
                                 </div>
-                                <span class="badge bg-success-subtle text-success" id="verifiedBadge">
+                                <span class="badge bg-success-subtle text-dark" id="verifiedBadge">
                                     <i class="bi bi-check-circle me-1"></i>Verified
                                 </span>
                             </div>
@@ -185,7 +268,7 @@
                             </div>
                             
                             <div class="info-item">
-                                <div class="info-icon bg-warning bg-opacity-10 text-warning">
+                                <div class="info-icon bg-warning bg-opacity-10 text-dark">
                                     <i class="bi bi-calendar-fill"></i>
                                 </div>
                                 <div class="flex-grow-1">
@@ -227,7 +310,7 @@
                             <hr class="my-4">
                             
                             <!-- Sign Out -->
-                            <button class="btn btn-danger action-btn w-100" onclick="doSignOut()">
+                            <button class="btn btn-dark action-btn w-100" onclick="doSignOut()">
                                 <i class="bi bi-box-arrow-right me-2"></i>Sign Out
                             </button>
                             
@@ -310,7 +393,7 @@
             // Verified badge
             if (!user.emailVerified) {
                 document.getElementById('verifiedBadge').innerHTML = '<i class="bi bi-x-circle me-1"></i>Not verified';
-                document.getElementById('verifiedBadge').className = 'badge bg-warning-subtle text-warning';
+                document.getElementById('verifiedBadge').className = 'badge bg-warning-subtle text-dark';
             }
 
             // Update navbar
@@ -328,7 +411,7 @@
                 '<li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-badge me-2"></i>Your Profile</a></li>' +
                 '<li><a class="dropdown-item" href="../index.html"><i class="bi bi-house me-2"></i>Homepage</a></li>' +
                 '<li><hr class="dropdown-divider"></li>' +
-                '<li><a class="dropdown-item text-danger" href="#" onclick="doSignOut()"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>' +
+                '<li><a class="dropdown-item text-dark" href="#" onclick="doSignOut()"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>' +
                 '</ul></div>';
         }
         

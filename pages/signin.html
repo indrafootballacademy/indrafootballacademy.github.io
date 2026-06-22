@@ -65,6 +65,89 @@
         /* Fallback: show content even if AOS/JS fails */
         [data-aos] { opacity: 1 !important; transform: none !important; }
     </style>
+
+    <!-- Inter Miami CF Color Override -->
+    <style>
+        :root {
+            --bs-primary: #F5B6CD !important;
+            --bs-success: #F5B6CD !important;
+            --bs-danger: #F5B6CD !important;
+            --bs-warning: #F5B6CD !important;
+            --bs-dark: #231F20 !important;
+            --bs-light: #FFFFFF !important;
+        }
+        .btn-dark {
+            background-color: #231F20 !important;
+            border-color: #231F20 !important;
+            color: #FFFFFF !important;
+        }
+        .btn-dark:hover {
+            background-color: #F5B6CD !important;
+            border-color: #F5B6CD !important;
+            color: #000000 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 182, 205, 0.4);
+        }
+        .btn-outline-light:hover {
+            background-color: #F5B6CD !important;
+            border-color: #F5B6CD !important;
+            color: #000000 !important;
+        }
+        .btn-primary, .btn-success, .btn-danger, .btn-warning {
+            background-color: #231F20 !important;
+            border-color: #231F20 !important;
+            color: #FFFFFF !important;
+        }
+        .btn-primary:hover, .btn-success:hover, .btn-danger:hover, .btn-warning:hover {
+            background-color: #F5B6CD !important;
+            border-color: #F5B6CD !important;
+            color: #000000 !important;
+        }
+        .btn-outline-dark {
+            border-color: #231F20 !important;
+            color: #231F20 !important;
+        }
+        .btn-outline-dark:hover {
+            background-color: #231F20 !important;
+            color: #FFFFFF !important;
+        }
+        .bg-dark {
+            background-color: #231F20 !important;
+        }
+        .text-primary, .text-success, .text-danger, .text-warning {
+            color: #F5B6CD !important;
+        }
+        .text-dark {
+            color: #231F20 !important;
+        }
+        .badge.bg-primary, .badge.bg-success, .badge.bg-danger, .badge.bg-warning {
+            background-color: #F5B6CD !important;
+            color: #000000 !important;
+        }
+        footer {
+            background: #000000 !important;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #F5B6CD !important;
+        }
+        .brand-text {
+            color: #F5B6CD !important;
+        }
+        #mainNavbar.scrolled {
+            background: rgba(35, 31, 32, 0.97) !important;
+        }
+        .form-control:focus {
+            border-color: #F5B6CD !important;
+            box-shadow: 0 0 0 0.2rem rgba(245, 182, 205, 0.25) !important;
+        }
+        a {
+            color: #231F20;
+        }
+        a:hover {
+            color: #F5B6CD;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -113,15 +196,15 @@
                                         </p>
                                         <ul class="list-unstyled">
                                             <li class="mb-3 d-flex align-items-center">
-                                                <i class="bi bi-shield-check text-warning me-2 fs-5"></i>
+                                                <i class="bi bi-shield-check text-dark me-2 fs-5"></i>
                                                 <small>Secure authentication</small>
                                             </li>
                                             <li class="mb-3 d-flex align-items-center">
-                                                <i class="bi bi-lightning text-warning me-2 fs-5"></i>
+                                                <i class="bi bi-lightning text-dark me-2 fs-5"></i>
                                                 <small>One-click Google sign in</small>
                                             </li>
                                             <li class="mb-3 d-flex align-items-center">
-                                                <i class="bi bi-graph-up text-warning me-2 fs-5"></i>
+                                                <i class="bi bi-graph-up text-dark me-2 fs-5"></i>
                                                 <small>Track your progress</small>
                                             </li>
                                         </ul>
@@ -174,7 +257,7 @@
                                     <!-- Status Messages -->
                                     <div id="authError" class="alert alert-danger mt-3 d-none small"></div>
                                     <div id="authStatus" class="text-center d-none mt-3">
-                                        <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                                        <div class="spinner-border spinner-border-sm text-dark" role="status"></div>
                                         <span class="text-muted ms-2">Signing in...</span>
                                     </div>
                                     
@@ -182,7 +265,7 @@
                                     
                                     <div class="text-center mb-3">
                                         <small class="text-muted">
-                                            <i class="bi bi-shield-fill-check text-success me-1"></i>
+                                            <i class="bi bi-shield-fill-check text-dark me-1"></i>
                                             Protected by Firebase Authentication
                                         </small>
                                     </div>
@@ -190,7 +273,7 @@
                                     <div class="text-center">
                                         <p class="text-muted mb-0">
                                             Don't have an account? 
-                                            <a href="register.html" class="fw-semibold text-decoration-none text-primary">Register here</a>
+                                            <a href="register.html" class="fw-semibold text-decoration-none text-dark">Register here</a>
                                         </p>
                                     </div>
                                 </div>
@@ -318,13 +401,13 @@
             
             document.getElementById('signinContent').innerHTML = 
                 '<div class="text-center py-5">' +
-                '<i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>' +
-                '<h3 class="fw-bold mt-3 text-success">Signed In Successfully!</h3>' +
+                '<i class="bi bi-check-circle-fill text-dark" style="font-size: 5rem;"></i>' +
+                '<h3 class="fw-bold mt-3 text-dark">Signed In Successfully!</h3>' +
                 '<p class="mt-2 mb-1"><strong>' + name + '</strong></p>' +
                 '<p class="text-muted small">' + email + '</p>' +
                 (isAdmin ? '<span class="badge bg-danger mb-3">⚡ Admin Account</span>' : '') +
                 '<div class="mt-4">' +
-                '<div class="spinner-border spinner-border-sm text-primary me-2"></div>' +
+                '<div class="spinner-border spinner-border-sm text-dark me-2"></div>' +
                 '<span class="text-muted">Redirecting to Homepage...</span>' +
                 '</div></div>';
             
@@ -344,7 +427,7 @@
                     '<li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-badge me-2"></i>Your Profile</a></li>' +
                     '<li><a class="dropdown-item" href="profile.html#reset"><i class="bi bi-key me-2"></i>Reset Password</a></li>' +
                     '<li><hr class="dropdown-divider"></li>' +
-                    '<li><a class="dropdown-item text-danger" href="#" onclick="auth.signOut().then(function(){location.reload()})"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>' +
+                    '<li><a class="dropdown-item text-dark" href="#" onclick="auth.signOut().then(function(){location.reload()})"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>' +
                     '</ul></div>';
             }
             

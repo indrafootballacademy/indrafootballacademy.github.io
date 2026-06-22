@@ -59,6 +59,89 @@
         /* Fallback: show content even if AOS/JS fails */
         [data-aos] { opacity: 1 !important; transform: none !important; }
     </style>
+
+    <!-- Inter Miami CF Color Override -->
+    <style>
+        :root {
+            --bs-primary: #F5B6CD !important;
+            --bs-success: #F5B6CD !important;
+            --bs-danger: #F5B6CD !important;
+            --bs-warning: #F5B6CD !important;
+            --bs-dark: #231F20 !important;
+            --bs-light: #FFFFFF !important;
+        }
+        .btn-dark {
+            background-color: #231F20 !important;
+            border-color: #231F20 !important;
+            color: #FFFFFF !important;
+        }
+        .btn-dark:hover {
+            background-color: #F5B6CD !important;
+            border-color: #F5B6CD !important;
+            color: #000000 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(245, 182, 205, 0.4);
+        }
+        .btn-outline-light:hover {
+            background-color: #F5B6CD !important;
+            border-color: #F5B6CD !important;
+            color: #000000 !important;
+        }
+        .btn-primary, .btn-success, .btn-danger, .btn-warning {
+            background-color: #231F20 !important;
+            border-color: #231F20 !important;
+            color: #FFFFFF !important;
+        }
+        .btn-primary:hover, .btn-success:hover, .btn-danger:hover, .btn-warning:hover {
+            background-color: #F5B6CD !important;
+            border-color: #F5B6CD !important;
+            color: #000000 !important;
+        }
+        .btn-outline-dark {
+            border-color: #231F20 !important;
+            color: #231F20 !important;
+        }
+        .btn-outline-dark:hover {
+            background-color: #231F20 !important;
+            color: #FFFFFF !important;
+        }
+        .bg-dark {
+            background-color: #231F20 !important;
+        }
+        .text-primary, .text-success, .text-danger, .text-warning {
+            color: #F5B6CD !important;
+        }
+        .text-dark {
+            color: #231F20 !important;
+        }
+        .badge.bg-primary, .badge.bg-success, .badge.bg-danger, .badge.bg-warning {
+            background-color: #F5B6CD !important;
+            color: #000000 !important;
+        }
+        footer {
+            background: #000000 !important;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #F5B6CD !important;
+        }
+        .brand-text {
+            color: #F5B6CD !important;
+        }
+        #mainNavbar.scrolled {
+            background: rgba(35, 31, 32, 0.97) !important;
+        }
+        .form-control:focus {
+            border-color: #F5B6CD !important;
+            box-shadow: 0 0 0 0.2rem rgba(245, 182, 205, 0.25) !important;
+        }
+        a {
+            color: #231F20;
+        }
+        a:hover {
+            color: #F5B6CD;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -130,7 +213,7 @@
                     <!-- Monday -->
                     <div class="mb-4" data-aos="fade-up">
                         <div class="day-header d-flex align-items-center gap-2 mb-3">
-                            <i class="bi bi-calendar-day text-primary"></i>
+                            <i class="bi bi-calendar-day text-dark"></i>
                             <span>Monday</span>
                         </div>
                         <div class="d-flex flex-column gap-2">
@@ -140,7 +223,7 @@
                                         <h6 class="mb-0 fw-bold">Little Strikers</h6>
                                         <small class="text-muted">Group A — Main Pitch</small>
                                     </div>
-                                    <span class="badge bg-success-subtle text-success px-3 py-2">4:00 – 5:00 PM</span>
+                                    <span class="badge bg-success-subtle text-dark px-3 py-2">4:00 – 5:00 PM</span>
                                 </div>
                             </div>
                             <div class="card schedule-card elite-dev border-0 shadow-sm p-3">
@@ -149,7 +232,7 @@
                                         <h6 class="mb-0 fw-bold">Elite Development</h6>
                                         <small class="text-muted">Technical Focus — Training Ground 2</small>
                                     </div>
-                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">5:30 – 7:00 PM</span>
+                                    <span class="badge bg-primary-subtle text-dark px-3 py-2">5:30 – 7:00 PM</span>
                                 </div>
                             </div>
                             <div class="card schedule-card pro-pathway border-0 shadow-sm p-3">
@@ -158,7 +241,7 @@
                                         <h6 class="mb-0 fw-bold">Pro Pathway</h6>
                                         <small class="text-muted">Tactical Session — Main Pitch</small>
                                     </div>
-                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">7:00 – 9:00 PM</span>
+                                    <span class="badge bg-danger-subtle text-dark px-3 py-2">7:00 – 9:00 PM</span>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +250,7 @@
                     <!-- Tuesday -->
                     <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="day-header d-flex align-items-center gap-2 mb-3">
-                            <i class="bi bi-calendar-day text-primary"></i>
+                            <i class="bi bi-calendar-day text-dark"></i>
                             <span>Tuesday</span>
                         </div>
                         <div class="d-flex flex-column gap-2">
@@ -177,7 +260,7 @@
                                         <h6 class="mb-0 fw-bold">Pro Pathway</h6>
                                         <small class="text-muted">Fitness & Conditioning — Gym</small>
                                     </div>
-                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">6:00 – 8:00 AM</span>
+                                    <span class="badge bg-danger-subtle text-dark px-3 py-2">6:00 – 8:00 AM</span>
                                 </div>
                             </div>
                             <div class="card schedule-card elite-dev border-0 shadow-sm p-3">
@@ -186,7 +269,7 @@
                                         <h6 class="mb-0 fw-bold">Elite Development</h6>
                                         <small class="text-muted">Match Simulation — Main Pitch</small>
                                     </div>
-                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">5:30 – 7:00 PM</span>
+                                    <span class="badge bg-primary-subtle text-dark px-3 py-2">5:30 – 7:00 PM</span>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +278,7 @@
                     <!-- Wednesday -->
                     <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="day-header d-flex align-items-center gap-2 mb-3">
-                            <i class="bi bi-calendar-day text-primary"></i>
+                            <i class="bi bi-calendar-day text-dark"></i>
                             <span>Wednesday</span>
                         </div>
                         <div class="d-flex flex-column gap-2">
@@ -205,7 +288,7 @@
                                         <h6 class="mb-0 fw-bold">Little Strikers</h6>
                                         <small class="text-muted">Group B — Training Ground 2</small>
                                     </div>
-                                    <span class="badge bg-success-subtle text-success px-3 py-2">4:00 – 5:00 PM</span>
+                                    <span class="badge bg-success-subtle text-dark px-3 py-2">4:00 – 5:00 PM</span>
                                 </div>
                             </div>
                             <div class="card schedule-card pro-pathway border-0 shadow-sm p-3">
@@ -214,7 +297,7 @@
                                         <h6 class="mb-0 fw-bold">Pro Pathway</h6>
                                         <small class="text-muted">Technical Excellence — Main Pitch</small>
                                     </div>
-                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">7:00 – 9:00 PM</span>
+                                    <span class="badge bg-danger-subtle text-dark px-3 py-2">7:00 – 9:00 PM</span>
                                 </div>
                             </div>
                         </div>
@@ -223,7 +306,7 @@
                     <!-- Thursday -->
                     <div class="mb-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="day-header d-flex align-items-center gap-2 mb-3">
-                            <i class="bi bi-calendar-day text-primary"></i>
+                            <i class="bi bi-calendar-day text-dark"></i>
                             <span>Thursday</span>
                         </div>
                         <div class="d-flex flex-column gap-2">
@@ -233,7 +316,7 @@
                                         <h6 class="mb-0 fw-bold">Elite Development</h6>
                                         <small class="text-muted">Set Pieces & Position Play</small>
                                     </div>
-                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">5:30 – 7:00 PM</span>
+                                    <span class="badge bg-primary-subtle text-dark px-3 py-2">5:30 – 7:00 PM</span>
                                 </div>
                             </div>
                             <div class="card schedule-card pro-pathway border-0 shadow-sm p-3">
@@ -242,7 +325,7 @@
                                         <h6 class="mb-0 fw-bold">Pro Pathway</h6>
                                         <small class="text-muted">Video Analysis + Match Prep</small>
                                     </div>
-                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">7:00 – 9:00 PM</span>
+                                    <span class="badge bg-danger-subtle text-dark px-3 py-2">7:00 – 9:00 PM</span>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +334,7 @@
                     <!-- Friday -->
                     <div class="mb-4" data-aos="fade-up" data-aos-delay="400">
                         <div class="day-header d-flex align-items-center gap-2 mb-3">
-                            <i class="bi bi-calendar-day text-primary"></i>
+                            <i class="bi bi-calendar-day text-dark"></i>
                             <span>Friday</span>
                         </div>
                         <div class="d-flex flex-column gap-2">
@@ -261,7 +344,7 @@
                                         <h6 class="mb-0 fw-bold">Pro Pathway</h6>
                                         <small class="text-muted">Match Day (League/Friendly)</small>
                                     </div>
-                                    <span class="badge bg-danger-subtle text-danger px-3 py-2">5:00 – 7:00 PM</span>
+                                    <span class="badge bg-danger-subtle text-dark px-3 py-2">5:00 – 7:00 PM</span>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +353,7 @@
                     <!-- Saturday -->
                     <div class="mb-4" data-aos="fade-up" data-aos-delay="500">
                         <div class="day-header d-flex align-items-center gap-2 mb-3">
-                            <i class="bi bi-calendar-day text-warning"></i>
+                            <i class="bi bi-calendar-day text-dark"></i>
                             <span>Saturday</span>
                         </div>
                         <div class="d-flex flex-column gap-2">
@@ -280,7 +363,7 @@
                                         <h6 class="mb-0 fw-bold">Little Strikers — Fun Match Day!</h6>
                                         <small class="text-muted">Mini tournament + parents welcome</small>
                                     </div>
-                                    <span class="badge bg-success-subtle text-success px-3 py-2">9:00 – 11:00 AM</span>
+                                    <span class="badge bg-success-subtle text-dark px-3 py-2">9:00 – 11:00 AM</span>
                                 </div>
                             </div>
                             <div class="card schedule-card elite-dev border-0 shadow-sm p-3">
@@ -289,7 +372,7 @@
                                         <h6 class="mb-0 fw-bold">Elite Development — Match Day</h6>
                                         <small class="text-muted">League fixtures</small>
                                     </div>
-                                    <span class="badge bg-primary-subtle text-primary px-3 py-2">11:30 AM – 1:30 PM</span>
+                                    <span class="badge bg-primary-subtle text-dark px-3 py-2">11:30 AM – 1:30 PM</span>
                                 </div>
                             </div>
                         </div>
@@ -365,7 +448,7 @@
                     '<li><a class="dropdown-item" href="profile.html"><i class="bi bi-person-badge me-2"></i>Your Profile</a></li>' +
                     '<li><a class="dropdown-item" href="../index.html"><i class="bi bi-house me-2"></i>Homepage</a></li>' +
                     '<li><hr class="dropdown-divider"></li>' +
-                    '<li><a class="dropdown-item text-danger" href="#" onclick="firebase.auth().signOut().then(function(){location.reload()})"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>' +
+                    '<li><a class="dropdown-item text-dark" href="#" onclick="firebase.auth().signOut().then(function(){location.reload()})"><i class="bi bi-box-arrow-right me-2"></i>Sign Out</a></li>' +
                     '</ul></div>';
             }
         });
